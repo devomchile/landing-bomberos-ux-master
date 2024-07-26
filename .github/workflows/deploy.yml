@@ -1,9 +1,9 @@
-name: Deploy to S3
+name: Deploy to AWS S3
 
 on:
   push:
     branches:
-      - master # o la rama desde la cual quieres desplegar
+      - master
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # usa la versión de Node.js que tu proyecto requiere
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
@@ -25,7 +25,7 @@ jobs:
         run: npm run build -- --configuration production
 
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@v0.5.8
+        uses: jakejarvis/s3-sync-action@v0.6.0
         with:
           args: --acl public-read --follow-symlinks --delete --exclude ".git/*" --exclude "README.md" --exclude "LICENSE"
         env:

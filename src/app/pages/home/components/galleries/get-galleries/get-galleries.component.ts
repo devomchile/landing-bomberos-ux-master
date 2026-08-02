@@ -11,11 +11,10 @@ import { RouterModule } from '@angular/router';
 import { IconComponent } from '../../../../../ui';
 
 @Component({
-  standalone: true,
-  selector: 'app-get-galleries',
-  templateUrl: './get-galleries.component.html',
-  styleUrls: ['./get-galleries.component.css'],
-  imports: [CommonModule, LoadingComponent, RouterModule, IconComponent],
+    selector: 'app-get-galleries',
+    templateUrl: './get-galleries.component.html',
+    styleUrls: ['./get-galleries.component.css'],
+    imports: [CommonModule, LoadingComponent, RouterModule, IconComponent]
 })
 export class GetGalleriesComponent implements OnInit, OnDestroy {
   galleries$: Observable<GetAllGalleriesDto> | undefined;

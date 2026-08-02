@@ -11,11 +11,10 @@ import { ThemeService } from '../services/commons/theme/theme.service';
 import { IconComponent } from '../ui';
 
 @Component({
-  standalone: true,
-  selector: 'app-shell',
-  templateUrl: './shell.component.html',
-  styleUrls: ['./shell.component.css'],
-  imports: [RouterModule, RouterOutlet, CommonModule, NgbModule, IconComponent],
+    selector: 'app-shell',
+    templateUrl: './shell.component.html',
+    styleUrls: ['./shell.component.css'],
+    imports: [RouterModule, RouterOutlet, CommonModule, NgbModule, IconComponent]
 })
 export class ShellComponent {
   readonly themeService = inject(ThemeService);

@@ -13,18 +13,17 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { filter } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterModule,
-    CommonModule,
-    RouterOutlet,
-    ShellComponent,
-    NgbModule,
-    MatSnackBarModule,
-  ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+    selector: 'app-root',
+    imports: [
+        RouterModule,
+        CommonModule,
+        RouterOutlet,
+        ShellComponent,
+        NgbModule,
+        MatSnackBarModule,
+    ],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   menuOption: string = '';

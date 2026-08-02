@@ -10,17 +10,16 @@ import {
 } from '../../../services/resources';
 
 @Component({
-  standalone: true,
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css'],
-  imports: [
-    RouterOutlet,
-    CommonModule,
-    RouterModule,
-    LinksStaffComponent,
-    LinksHomeComponent,
-  ],
+    selector: 'app-company',
+    templateUrl: './company.component.html',
+    styleUrls: ['./company.component.css'],
+    imports: [
+        RouterOutlet,
+        CommonModule,
+        RouterModule,
+        LinksStaffComponent,
+        LinksHomeComponent,
+    ]
 })
 export class CompanyComponent implements OnInit {
   name!: string;

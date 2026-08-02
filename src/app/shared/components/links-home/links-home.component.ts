@@ -5,11 +5,10 @@ import { IconComponent } from '../../../ui';
 import { LoadingComponent } from '../../../pages/home/components/loading/loading.component';
 
 @Component({
-  standalone: true,
-  selector: 'app-links-home',
-  templateUrl: './links-home.component.html',
-  styleUrls: ['./links-home.component.css'],
-  imports: [CommonModule, IconComponent, LoadingComponent],
+    selector: 'app-links-home',
+    templateUrl: './links-home.component.html',
+    styleUrls: ['./links-home.component.css'],
+    imports: [CommonModule, IconComponent, LoadingComponent]
 })
 export class LinksHomeComponent implements OnInit {
   bannersAndPromotions: any[] = [];

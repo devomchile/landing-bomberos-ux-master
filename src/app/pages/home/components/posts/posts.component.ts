@@ -9,12 +9,11 @@ import { GetAllPostsDto } from '../../../../services/post/get-all-posts/dtos';
 import { IconComponent } from '../../../../ui';
 
 @Component({
-  standalone: true,
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css'],
-  providers: [DatePipe],
-  imports: [CommonModule, LoadingComponent, RouterModule, LinksHomeComponent, IconComponent],
+    selector: 'app-posts',
+    templateUrl: './posts.component.html',
+    styleUrls: ['./posts.component.css'],
+    providers: [DatePipe],
+    imports: [CommonModule, LoadingComponent, RouterModule, LinksHomeComponent, IconComponent]
 })
 export class PostsComponent implements OnInit, OnDestroy {
   posts: GetAllPostsDto[] = [];

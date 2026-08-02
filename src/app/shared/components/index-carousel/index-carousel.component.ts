@@ -8,11 +8,10 @@ import { catchError, of, tap } from 'rxjs';
 import { IconComponent } from '../../../ui';
 
 @Component({
-  selector: 'app-index-carousel',
-  standalone: true,
-  imports: [CommonModule, IconComponent],
-  templateUrl: './index-carousel.component.html',
-  styleUrl: './index-carousel.component.css',
+    selector: 'app-index-carousel',
+    imports: [CommonModule, IconComponent],
+    templateUrl: './index-carousel.component.html',
+    styleUrl: './index-carousel.component.css'
 })
 export class IndexCarouselComponent implements OnInit {
   principalCarousel: any[] = [];

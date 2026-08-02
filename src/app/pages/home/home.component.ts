@@ -21,26 +21,25 @@ import { IconComponent } from '../../ui';
 import { WeatherChipComponent } from '../../ui';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    IconComponent,
-    WeatherChipComponent,
-    IndexCarouselComponent,
-    LoadingComponent,
-    GetGalleriesComponent,
-    ContactFormComponent,
-    PostulationFormComponent,
-  ],
-  providers: [DatePipe],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
-  host: {
-    '(window:scroll)': 'onWindowScroll',
-  },
+    selector: 'app-home',
+    imports: [
+        CommonModule,
+        RouterModule,
+        ReactiveFormsModule,
+        IconComponent,
+        WeatherChipComponent,
+        IndexCarouselComponent,
+        LoadingComponent,
+        GetGalleriesComponent,
+        ContactFormComponent,
+        PostulationFormComponent,
+    ],
+    providers: [DatePipe],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    host: {
+        '(window:scroll)': 'onWindowScroll',
+    }
 })
 export class HomeComponent implements OnInit {
   isLoading: boolean = true;

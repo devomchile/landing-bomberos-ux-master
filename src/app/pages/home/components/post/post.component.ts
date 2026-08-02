@@ -13,12 +13,11 @@ import {
 import { IconComponent } from '../../../../ui';
 
 @Component({
-  selector: 'app-post',
-  standalone: true,
-  providers: [DatePipe],
-  imports: [CommonModule, RouterModule, LinksHomeComponent, IconComponent],
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
+    selector: 'app-post',
+    providers: [DatePipe],
+    imports: [CommonModule, RouterModule, LinksHomeComponent, IconComponent],
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
   slug!: string;

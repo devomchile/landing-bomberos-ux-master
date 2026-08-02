@@ -4,11 +4,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconComponent } from '../../../../../ui';
 
 @Component({
-  selector: 'app-image-modal',
-  standalone: true,
-  imports: [CommonModule, IconComponent],
-  templateUrl: './image-modal.component.html',
-  styleUrls: ['./image-modal.component.css'],
+    selector: 'app-image-modal',
+    imports: [CommonModule, IconComponent],
+    templateUrl: './image-modal.component.html',
+    styleUrls: ['./image-modal.component.css']
 })
 export class ImageModalComponent {
   @Input() imageUrl!: string;

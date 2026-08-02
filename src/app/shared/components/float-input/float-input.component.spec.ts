@@ -8,7 +8,7 @@ describe('FloatInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FloatInputComponent]
+      imports: [FloatInputComponent]
     });
     fixture = TestBed.createComponent(FloatInputComponent);
     component = fixture.componentInstance;

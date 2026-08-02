@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import {
   FormBuilder,
@@ -38,6 +38,9 @@ import { WeatherChipComponent } from '../../ui';
   providers: [DatePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
+  host: {
+    '(window:scroll)': 'onWindowScroll',
+  },
 })
 export class HomeComponent implements OnInit {
   isLoading: boolean = true;
@@ -100,7 +103,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  @HostListener('window:scroll', [])
   onWindowScroll() {
     this.parallax();
   }

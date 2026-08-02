@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FloatInputComponent } from '../../../../../shared/components/float-input/float-input.component';
+import { IconComponent } from '../../../../../ui';
 import {
   FormBuilder,
   FormGroup,
@@ -20,6 +21,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    IconComponent,
     FloatInputComponent,
     MatSnackBarModule,
   ],

@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { LoadingComponent } from '../../home/components/loading/loading.component';
+import { IconComponent } from '../../../ui';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from './feature/image-modal';
 import {
@@ -21,6 +22,7 @@ import {
   imports: [
     CommonModule,
     RouterLink,
+    IconComponent,
     LinksHomeComponent,
     LoadingComponent,
     ImageModalComponent,

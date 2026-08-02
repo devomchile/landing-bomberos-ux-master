@@ -60,9 +60,11 @@ function get_nextgen_galleries($data) {
     // Calcular el OFFSET para la paginación
     $offset = ($page - 1) * $per_page;
 
-    // Query para obtener todas las galerías con paginación
+    // Query para obtener todas las galerías con paginación ordenadas por fecha descendente
     $results = $wpdb->get_results($wpdb->prepare(
-        "SELECT * FROM {$wpdb->prefix}ngg_gallery LIMIT %d, %d",
+        "SELECT * FROM {$wpdb->prefix}ngg_gallery 
+         ORDER BY (SELECT MIN(imagedate) FROM {$wpdb->prefix}ngg_pictures WHERE galleryid = gid) DESC 
+         LIMIT %d, %d",
         $offset, // Offset
         $per_page // Limit
     ));

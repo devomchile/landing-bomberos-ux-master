@@ -4,6 +4,7 @@ import { ViewMachines } from '../../../../shared/interfaces/viewMachines';
 import { CompanieService } from '../../../../services/companies';
 import { LinksStaffComponent } from '../../../../shared/components/links-staff/links-staff.component';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
+import { IconComponent } from '../../../../ui';
 import { ApiTag } from '../../../../services/environments/api-tag/api-tag.enum';
 import {
   ImageMachine,
@@ -15,7 +16,7 @@ import {
   selector: 'app-machines',
   templateUrl: './machines.component.html',
   styleUrls: ['./machines.component.css'],
-  imports: [LinksStaffComponent, LinksHomeComponent],
+  imports: [LinksStaffComponent, LinksHomeComponent, IconComponent],
 })
 export class MachinesComponent implements OnInit {
   items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];

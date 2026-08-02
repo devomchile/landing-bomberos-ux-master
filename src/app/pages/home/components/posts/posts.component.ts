@@ -6,6 +6,7 @@ import { LoadingComponent } from '../loading/loading.component';
 import { RouterModule } from '@angular/router';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
 import { GetAllPostsDto } from '../../../../services/post/get-all-posts/dtos';
+import { IconComponent } from '../../../../ui';
 
 @Component({
   standalone: true,
@@ -13,7 +14,7 @@ import { GetAllPostsDto } from '../../../../services/post/get-all-posts/dtos';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css'],
   providers: [DatePipe],
-  imports: [CommonModule, LoadingComponent, RouterModule, LinksHomeComponent],
+  imports: [CommonModule, LoadingComponent, RouterModule, LinksHomeComponent, IconComponent],
 })
 export class PostsComponent implements OnInit, OnDestroy {
   posts: GetAllPostsDto[] = [];

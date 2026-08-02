@@ -1,16 +1,64 @@
-<div class="carousel-container">
-  @if(imagesWithLinks){
-  <igx-carousel [loop]="true" [interval]="5000"
-    >@for(item of imagesWithLinks; track item.id){
-    <igx-slide>
-      <a href="{{ item.link }}" target="_blank">
-        <img [src]="item.src" alt="{{ item.alt }}"
-      /></a>
-      <span class="image-description">{{ item.alt }}</span>
-    </igx-slide>
+<div
+  id="heroCarousel"
+  class="carousel slide hero-carousel"
+  data-bs-ride="carousel"
+  data-bs-interval="5000"
+  data-bs-touch="true"
+>
+  @if(imagesWithLinks && imagesWithLinks.length > 0){
+
+  <div class="carousel-indicators glass-carousel-dots">
+    @for(item of imagesWithLinks; track item.id; let i = $index){
+    <button
+      type="button"
+      data-bs-target="#heroCarousel"
+      [attr.data-bs-slide-to]="i"
+      [class.active]="i === 0"
+      [attr.aria-label]="'Slide ' + (i + 1)"
+    ></button>
     }
-  </igx-carousel>
+  </div>
+
+  <div class="carousel-inner">
+    @for(item of imagesWithLinks; track item.id; let i = $index){
+    <div class="carousel-item" [class.active]="i === 0">
+      <a [href]="item.link" target="_blank">
+        <img [src]="item.src" class="d-block w-100 hero-img" [alt]="item.alt" />
+      </a>
+      <div class="carousel-caption glass-caption">
+        <span>{{ item.alt }}</span>
+      </div>
+    </div>
+    }
+  </div>
+
+  <button
+    class="carousel-control-prev glass-carousel-arrow"
+    type="button"
+    data-bs-target="#heroCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+
+  <button
+    class="carousel-control-next glass-carousel-arrow"
+    type="button"
+    data-bs-target="#heroCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+
   } @else {
-  <h1>Espacio disponible para publicidad</h1>
+  <div
+    class="carousel-placeholder d-flex flex-column align-items-center justify-content-center w-100 h-100 glass-dark"
+  >
+    <ui-icon name="fire_extinguisher" size="4rem" [opacity]="0.6"></ui-icon>
+    <h3>Cuerpo de Bomberos Malalhue</h3>
+    <p>Espacio disponible para publicidad</p>
+  </div>
   }
 </div>

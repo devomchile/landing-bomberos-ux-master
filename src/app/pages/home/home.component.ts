@@ -17,6 +17,8 @@ import { PostulationFormComponent } from './components/forms/postulation-form/po
 import { GetAllPostsDto } from '../../services/post/get-all-posts/dtos';
 import { tap } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { IconComponent } from '../../ui';
+import { WeatherChipComponent } from '../../ui';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +27,8 @@ import { AuthService } from '../../services/auth.service';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    IconComponent,
+    WeatherChipComponent,
     IndexCarouselComponent,
     LoadingComponent,
     GetGalleriesComponent,

@@ -6,7 +6,6 @@ import {
   GalleriesDto,
 } from '../../../services/features/gallery/dtos';
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
-import { LinksStaffComponent } from '../../../shared/components/links-staff/links-staff.component';
 import { IconComponent } from '../../../ui';
 
 import { RouterLink } from '@angular/router';
@@ -16,7 +15,6 @@ import { LoadingComponent } from '../../home/components/loading/loading.componen
     selector: 'app-get-all-galleries',
     imports: [
     LinksHomeComponent,
-    LinksStaffComponent,
     RouterLink,
     IconComponent,
     LoadingComponent

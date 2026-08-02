@@ -3,7 +3,6 @@ import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../../services';
 
-import { RouterLink } from '@angular/router';
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { LoadingComponent } from '../../home/components/loading/loading.component';
 import { IconComponent } from '../../../ui';
@@ -19,7 +18,6 @@ import {
 @Component({
     selector: 'app-get-gallery',
     imports: [
-    RouterLink,
     IconComponent,
     LinksHomeComponent,
     LoadingComponent,

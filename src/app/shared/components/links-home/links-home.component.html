@@ -7,7 +7,9 @@ imagesWithLinks2 : imagesWithLinks3;
   <div class="row">
     <div class="col">
       <div class="d-flex justify-content-center align-items-center">
-        @if(images && images.length > 0){
+        @if(isLoading){
+        <app-loading></app-loading>
+        } @else { @if(images && images.length > 0){
         <div
           [attr.id]="carouselId"
           class="carousel slide ad-carousel"
@@ -44,13 +46,12 @@ imagesWithLinks2 : imagesWithLinks3;
         <div class="ad-placeholder glass-dark">
           <p>Espacio disponible para publicidad</p>
         </div>
-        }
+        } }
       </div>
     </div>
   </div>
 </div>
 }
-
 <div class="col-md-12 mt-2">
   <a href="https://devom.cl/" target="_blank" class="devom-card glass-card">
     <div class="devom-card-content">

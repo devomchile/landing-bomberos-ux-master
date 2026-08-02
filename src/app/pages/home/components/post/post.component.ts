@@ -10,12 +10,13 @@ import {
   GetMediaResourceDto,
   GetMediaResourceService,
 } from '../../../../services/resources';
+import { IconComponent } from '../../../../ui';
 
 @Component({
   selector: 'app-post',
   standalone: true,
   providers: [DatePipe],
-  imports: [CommonModule, RouterModule, LinksHomeComponent],
+  imports: [CommonModule, RouterModule, LinksHomeComponent, IconComponent],
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.css'],
 })
@@ -24,6 +25,7 @@ export class PostComponent implements OnInit {
   item: any;
   categories: string[] = [];
   featuredMedia: GetMediaResourceDto | null = null;
+  returnPage = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +36,9 @@ export class PostComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.returnPage = +params['page'] || 1;
+    });
     this.route.params.subscribe((params) => {
       this.slug = params['slug-noticia'];
       this.loadPost(this.slug);

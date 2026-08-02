@@ -18,11 +18,11 @@ import { DonationSuccessComponent } from './pages/donations/donation/features/do
 import { DonationErrorComponent } from './pages/donations/donation/features/donation-error/donation-error.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+  { path: '', component: HomeComponent, data: { title: 'Bomberos UI' } },
   {
     path: 'inicio',
-    component: HomeComponent,
-    data: { title: 'Bomberos UI' },
+    redirectTo: '',
+    pathMatch: 'full',
   },
   {
     path: 'companies',

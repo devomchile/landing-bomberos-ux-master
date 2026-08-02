@@ -2,19 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { BannersAndPromotionsService } from '../../../services/banners-and-promotions';
 import { CommonModule } from '@angular/common';
 import { IconComponent } from '../../../ui';
+import { LoadingComponent } from '../../../pages/home/components/loading/loading.component';
 
 @Component({
   standalone: true,
   selector: 'app-links-home',
   templateUrl: './links-home.component.html',
   styleUrls: ['./links-home.component.css'],
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, LoadingComponent],
 })
 export class LinksHomeComponent implements OnInit {
   bannersAndPromotions: any[] = [];
   imagesWithLinks1: { src: string; link: string; id: number; alt: string }[] = [];
   imagesWithLinks2: { src: string; link: string; id: number; alt: string }[] = [];
   imagesWithLinks3: { src: string; link: string; id: number; alt: string }[] = [];
+  isLoading = true;
+  private loadedCount = 0;
 
   constructor(
     private readonly getBannersAndPromotions: BannersAndPromotionsService
@@ -28,26 +31,36 @@ export class LinksHomeComponent implements OnInit {
 
   async loadBannersAndPromotions1(): Promise<void> {
     const id = 1;
-    (await this.getBannersAndPromotions.getBannersAndPromotions(id)).subscribe(
-      (data) => this.extractImagesAndLinks1(data),
-      (error) => console.error('Ocurrio un error al obtener los datos:', error)
-    );
+    (await this.getBannersAndPromotions.getBannersAndPromotions(id)).subscribe({
+      next: (data) => this.extractImagesAndLinks1(data),
+      error: () => {},
+      complete: () => this.#markLoaded(),
+    });
   }
 
   async loadBannersAndPromotions2(): Promise<void> {
     const id = 2;
-    (await this.getBannersAndPromotions.getBannersAndPromotions(id)).subscribe(
-      (data) => this.extractImagesAndLinks2(data),
-      (error) => console.error('Ocurrio un error al obtener los datos:', error)
-    );
+    (await this.getBannersAndPromotions.getBannersAndPromotions(id)).subscribe({
+      next: (data) => this.extractImagesAndLinks2(data),
+      error: () => {},
+      complete: () => this.#markLoaded(),
+    });
   }
 
   async loadBannersAndPromotions3(): Promise<void> {
     const id = 3;
-    (await this.getBannersAndPromotions.getBannersAndPromotions(id)).subscribe(
-      (data) => this.extractImagesAndLinks3(data),
-      (error) => console.error('Ocurrio un error al obtener los datos:', error)
-    );
+    (await this.getBannersAndPromotions.getBannersAndPromotions(id)).subscribe({
+      next: (data) => this.extractImagesAndLinks3(data),
+      error: () => {},
+      complete: () => this.#markLoaded(),
+    });
+  }
+
+  #markLoaded(): void {
+    this.loadedCount++;
+    if (this.loadedCount >= 3) {
+      this.isLoading = false;
+    }
   }
 
   extractImagesAndLinks1(data: any): void {

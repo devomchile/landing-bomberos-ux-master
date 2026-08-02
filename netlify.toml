@@ -17,3 +17,7 @@ NODE_VERSION = "22"
   status = 200
   force = true
 
+[[plugins]]
+package = "@netlify/angular-runtime"
+disabled = true
+

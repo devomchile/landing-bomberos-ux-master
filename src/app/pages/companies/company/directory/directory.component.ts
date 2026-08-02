@@ -7,7 +7,7 @@ import {
   GetMediaResourceDto,
   GetMediaResourceService,
 } from '../../../../services/resources';
-import { CommonModule } from '@angular/common';
+
 import { CardInterfaceDto } from '../../../../shared/interfaces/card-volunteer.dto';
 import { DirectoryDto } from '../../../../shared/interfaces/directory.dto';
 import { ApiTag } from '../../../../services/environments/api-tag/api-tag.enum';
@@ -24,11 +24,10 @@ const iconMap: Record<string, string> = {
 };
 
 @Component({
-  standalone: true,
-  selector: 'app-directory',
-  templateUrl: './directory.component.html',
-  styleUrls: ['./directory.component.css'],
-  imports: [LinksStaffComponent, LinksHomeComponent, CommonModule, IconComponent, LoadingComponent],
+    selector: 'app-directory',
+    templateUrl: './directory.component.html',
+    styleUrls: ['./directory.component.css'],
+    imports: [LinksStaffComponent, LinksHomeComponent, IconComponent, LoadingComponent]
 })
 export class DirectoryComponent implements OnInit {
   items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];

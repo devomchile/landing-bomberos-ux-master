@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import { FloatInputComponent } from '../../../../../shared/components/float-input/float-input.component';
 import { IconComponent } from '../../../../../ui';
@@ -16,17 +16,15 @@ import { SnackBarsColors } from '../../../../../services/commons/snack-bar/enums
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-contact-form',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-contact-form',
+    imports: [
     ReactiveFormsModule,
     IconComponent,
     FloatInputComponent,
-    MatSnackBarModule,
-  ],
-  templateUrl: './contact-form.component.html',
-  styleUrl: './contact-form.component.css',
+    MatSnackBarModule
+],
+    templateUrl: './contact-form.component.html',
+    styleUrl: './contact-form.component.css'
 })
 export class ContactFormComponent {
   contactForm!: FormGroup;

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription, tap } from 'rxjs';
 import { GetAllPostsService } from '../../../../services/post';
-import { DatePipe, CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { LoadingComponent } from '../loading/loading.component';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
@@ -9,12 +9,11 @@ import { GetAllPostsDto } from '../../../../services/post/get-all-posts/dtos';
 import { IconComponent } from '../../../../ui';
 
 @Component({
-  standalone: true,
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css'],
-  providers: [DatePipe],
-  imports: [CommonModule, LoadingComponent, RouterModule, LinksHomeComponent, IconComponent],
+    selector: 'app-posts',
+    templateUrl: './posts.component.html',
+    styleUrls: ['./posts.component.css'],
+    providers: [DatePipe],
+    imports: [LoadingComponent, RouterModule, LinksHomeComponent, IconComponent]
 })
 export class PostsComponent implements OnInit, OnDestroy {
   posts: GetAllPostsDto[] = [];

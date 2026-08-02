@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GetPostService } from '../../../../services/post/get-post';
-import { DatePipe, CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
 import { RouterModule } from '@angular/router';
 import { GetCategoryService } from '../../../../services/resources/get-category.service';
@@ -13,12 +13,11 @@ import {
 import { IconComponent } from '../../../../ui';
 
 @Component({
-  selector: 'app-post',
-  standalone: true,
-  providers: [DatePipe],
-  imports: [CommonModule, RouterModule, LinksHomeComponent, IconComponent],
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
+    selector: 'app-post',
+    providers: [DatePipe],
+    imports: [RouterModule, LinksHomeComponent, IconComponent],
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
   slug!: string;

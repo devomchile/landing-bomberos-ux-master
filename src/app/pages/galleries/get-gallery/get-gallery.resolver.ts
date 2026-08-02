@@ -1,17 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
+import { inject } from '@angular/core';
+import { ResolveFn } from '@angular/router';
 import { GalleriesService } from '../../../services';
 
-@Injectable({ providedIn: 'root' })
-export class GetGalleryResolver implements Resolve<any> {
-  constructor(private galleriesService: GalleriesService) {}
-
-  resolve(route: ActivatedRouteSnapshot) {
-    const slug = route.paramMap.get('slug-noticia');
-    if (slug) {
-      return this.galleriesService.getGalleryBySlug(slug);
-    } else {
-      return null;
-    }
+export const getGalleryResolver: ResolveFn<any> = (route) => {
+  const slug = route.paramMap.get('slug-noticia');
+  if (slug) {
+    return inject(GalleriesService).getGalleryBySlug(slug);
   }
-}
+  return null;
+};

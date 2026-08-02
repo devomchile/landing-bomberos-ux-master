@@ -8,10 +8,9 @@ import { IconComponent } from '../icon/icon.component';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'ui-weather-chip',
-  standalone: true,
-  imports: [CommonModule, IconComponent],
-  template: `
+    selector: 'ui-weather-chip',
+    imports: [CommonModule, IconComponent],
+    template: `
     <div class="weather-chip">
       <span class="weather-item">
         <ui-icon name="thermostat" size="20px" color="white"></ui-icon>
@@ -34,8 +33,8 @@ import { Observable } from 'rxjs';
       </span>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       :host {
         display: block;
       }
@@ -76,7 +75,7 @@ import { Observable } from 'rxjs';
         }
       }
     `,
-  ],
+    ]
 })
 export class WeatherChipComponent {
   readonly weather = inject(WeatherService);

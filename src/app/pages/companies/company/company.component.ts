@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { LinksStaffComponent } from '../../../shared/components/links-staff/links-staff.component';
@@ -10,17 +10,15 @@ import {
 } from '../../../services/resources';
 
 @Component({
-  standalone: true,
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.css'],
-  imports: [
+    selector: 'app-company',
+    templateUrl: './company.component.html',
+    styleUrls: ['./company.component.css'],
+    imports: [
     RouterOutlet,
-    CommonModule,
     RouterModule,
     LinksStaffComponent,
-    LinksHomeComponent,
-  ],
+    LinksHomeComponent
+]
 })
 export class CompanyComponent implements OnInit {
   name!: string;

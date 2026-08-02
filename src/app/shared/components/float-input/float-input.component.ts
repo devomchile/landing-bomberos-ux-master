@@ -1,13 +1,11 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-float-input',
-  templateUrl: './float-input.component.html',
-  styleUrls: ['./float-input.component.css'],
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+    selector: 'app-float-input',
+    templateUrl: './float-input.component.html',
+    styleUrl: './float-input.component.css',
+    imports: [ReactiveFormsModule]
 })
 export class FloatInputComponent {
   @Input() type: string = 'text';

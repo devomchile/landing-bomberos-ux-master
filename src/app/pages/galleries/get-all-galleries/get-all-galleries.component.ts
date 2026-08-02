@@ -8,23 +8,21 @@ import {
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { LinksStaffComponent } from '../../../shared/components/links-staff/links-staff.component';
 import { IconComponent } from '../../../ui';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { LoadingComponent } from '../../home/components/loading/loading.component';
 
 @Component({
-  selector: 'app-get-all-galleries',
-  standalone: true,
-  imports: [
+    selector: 'app-get-all-galleries',
+    imports: [
     LinksHomeComponent,
     LinksStaffComponent,
-    CommonModule,
     RouterLink,
     IconComponent,
-    LoadingComponent,
-  ],
-  templateUrl: './get-all-galleries.component.html',
-  styleUrl: './get-all-galleries.component.css',
+    LoadingComponent
+],
+    templateUrl: './get-all-galleries.component.html',
+    styleUrl: './get-all-galleries.component.css'
 })
 export class GetAllGalleriesComponent implements OnInit, OnDestroy {
   galleries$: Observable<GetAllGalleriesDto> | undefined;

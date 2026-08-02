@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../../services';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { LoadingComponent } from '../../home/components/loading/loading.component';
@@ -17,18 +17,16 @@ import {
 } from '../../../services/features/gallery/dtos';
 
 @Component({
-  selector: 'app-get-gallery',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-get-gallery',
+    imports: [
     RouterLink,
     IconComponent,
     LinksHomeComponent,
     LoadingComponent,
-    ImageModalComponent,
-  ],
-  templateUrl: './get-gallery.component.html',
-  styleUrls: ['./get-gallery.component.css'],
+    ImageModalComponent
+],
+    templateUrl: './get-gallery.component.html',
+    styleUrls: ['./get-gallery.component.css']
 })
 export class GetGalleryComponent implements OnInit, OnDestroy {
   gallery$: Observable<GetGalleryByIdDto> | undefined;

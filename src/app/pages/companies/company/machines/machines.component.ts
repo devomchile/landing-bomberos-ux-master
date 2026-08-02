@@ -13,11 +13,10 @@ import {
 } from '../../../../shared/interfaces/machines.dto';
 
 @Component({
-  standalone: true,
-  selector: 'app-machines',
-  templateUrl: './machines.component.html',
-  styleUrls: ['./machines.component.css'],
-  imports: [LinksStaffComponent, LinksHomeComponent, IconComponent, LoadingComponent],
+    selector: 'app-machines',
+    templateUrl: './machines.component.html',
+    styleUrls: ['./machines.component.css'],
+    imports: [LinksStaffComponent, LinksHomeComponent, IconComponent, LoadingComponent]
 })
 export class MachinesComponent implements OnInit {
   items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
 import {
   ImageDetailsDto,
@@ -9,7 +9,7 @@ import { IconComponent } from '../../../ui';
 
 @Component({
     selector: 'app-index-carousel',
-    imports: [CommonModule, IconComponent],
+    imports: [IconComponent],
     templateUrl: './index-carousel.component.html',
     styleUrl: './index-carousel.component.css'
 })

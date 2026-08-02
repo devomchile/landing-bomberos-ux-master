@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IconComponent } from '../../../../../ui';
 
 @Component({
     selector: 'app-image-modal',
-    imports: [CommonModule, IconComponent],
+    imports: [IconComponent],
     templateUrl: './image-modal.component.html',
     styleUrls: ['./image-modal.component.css']
 })

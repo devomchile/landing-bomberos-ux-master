@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
@@ -23,17 +23,16 @@ import { WeatherChipComponent } from '../../ui';
 @Component({
     selector: 'app-home',
     imports: [
-        CommonModule,
-        RouterModule,
-        ReactiveFormsModule,
-        IconComponent,
-        WeatherChipComponent,
-        IndexCarouselComponent,
-        LoadingComponent,
-        GetGalleriesComponent,
-        ContactFormComponent,
-        PostulationFormComponent,
-    ],
+    RouterModule,
+    ReactiveFormsModule,
+    IconComponent,
+    WeatherChipComponent,
+    IndexCarouselComponent,
+    LoadingComponent,
+    GetGalleriesComponent,
+    ContactFormComponent,
+    PostulationFormComponent
+],
     providers: [DatePipe],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',

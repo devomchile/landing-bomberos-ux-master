@@ -5,7 +5,7 @@ import {
   GalleriesDto,
   GetAllGalleriesDto,
 } from '../../../../../services/features/gallery/dtos';
-import { CommonModule } from '@angular/common';
+
 import { LoadingComponent } from '../../loading/loading.component';
 import { RouterModule } from '@angular/router';
 import { IconComponent } from '../../../../../ui';
@@ -14,7 +14,7 @@ import { IconComponent } from '../../../../../ui';
     selector: 'app-get-galleries',
     templateUrl: './get-galleries.component.html',
     styleUrls: ['./get-galleries.component.css'],
-    imports: [CommonModule, LoadingComponent, RouterModule, IconComponent]
+    imports: [LoadingComponent, RouterModule, IconComponent]
 })
 export class GetGalleriesComponent implements OnInit, OnDestroy {
   galleries$: Observable<GetAllGalleriesDto> | undefined;

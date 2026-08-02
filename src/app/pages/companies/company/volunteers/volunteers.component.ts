@@ -10,7 +10,7 @@ import { DirectoryDto } from '../../../../shared/interfaces/directory.dto';
 import { ApiTag } from '../../../../services/environments/api-tag/api-tag.enum';
 import { LinksStaffComponent } from '../../../../shared/components/links-staff/links-staff.component';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
-import { CommonModule } from '@angular/common';
+
 import { IconComponent } from '../../../../ui';
 import { LoadingComponent } from '../../../home/components/loading/loading.component';
 
@@ -27,7 +27,7 @@ const iconMap: Record<string, string> = {
     selector: 'app-volunteers',
     templateUrl: './volunteers.component.html',
     styleUrls: ['./volunteers.component.css'],
-    imports: [LinksStaffComponent, LinksHomeComponent, CommonModule, IconComponent, LoadingComponent]
+    imports: [LinksStaffComponent, LinksHomeComponent, IconComponent, LoadingComponent]
 })
 export class VolunteersComponent implements OnInit {
   items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];

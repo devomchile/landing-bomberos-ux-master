@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import { FloatInputComponent } from '../../../../../shared/components/float-input/float-input.component';
 import { IconComponent } from '../../../../../ui';
@@ -18,12 +18,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 @Component({
     selector: 'app-contact-form',
     imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        IconComponent,
-        FloatInputComponent,
-        MatSnackBarModule,
-    ],
+    ReactiveFormsModule,
+    IconComponent,
+    FloatInputComponent,
+    MatSnackBarModule
+],
     templateUrl: './contact-form.component.html',
     styleUrl: './contact-form.component.css'
 })

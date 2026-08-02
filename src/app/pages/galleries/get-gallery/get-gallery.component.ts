@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../../services';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { LoadingComponent } from '../../home/components/loading/loading.component';
@@ -19,13 +19,12 @@ import {
 @Component({
     selector: 'app-get-gallery',
     imports: [
-        CommonModule,
-        RouterLink,
-        IconComponent,
-        LinksHomeComponent,
-        LoadingComponent,
-        ImageModalComponent,
-    ],
+    RouterLink,
+    IconComponent,
+    LinksHomeComponent,
+    LoadingComponent,
+    ImageModalComponent
+],
     templateUrl: './get-gallery.component.html',
     styleUrls: ['./get-gallery.component.css']
 })

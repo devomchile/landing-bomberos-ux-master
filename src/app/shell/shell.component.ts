@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, inject } from '@angular/core';
 import {
   NavigationEnd,
@@ -14,7 +14,7 @@ import { IconComponent } from '../ui';
     selector: 'app-shell',
     templateUrl: './shell.component.html',
     styleUrls: ['./shell.component.css'],
-    imports: [RouterModule, RouterOutlet, CommonModule, NgbModule, IconComponent]
+    imports: [RouterModule, RouterOutlet, NgbModule, IconComponent]
 })
 export class ShellComponent {
   readonly themeService = inject(ThemeService);

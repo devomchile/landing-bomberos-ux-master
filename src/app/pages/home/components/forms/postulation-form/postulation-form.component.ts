@@ -6,7 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormsService } from '../../../../../services';
-import { CommonModule } from '@angular/common';
+
 import { EMPTY, catchError, map, of, tap } from 'rxjs';
 import { SnackBarService } from '../../../../../services/commons/snack-bar/snack-bar.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -15,7 +15,7 @@ import { IconComponent } from '../../../../../ui';
 
 @Component({
     selector: 'app-postulation-form',
-    imports: [CommonModule, ReactiveFormsModule, IconComponent],
+    imports: [ReactiveFormsModule, IconComponent],
     templateUrl: './postulation-form.component.html',
     styleUrl: './postulation-form.component.css'
 })

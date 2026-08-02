@@ -25,7 +25,7 @@
                 "maximumError": "50kb"
               }
             ],
-            "outputPath": "dist/landing-page-angular17",
+            "outputPath": "dist/landing-bomberos-ux-master",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [

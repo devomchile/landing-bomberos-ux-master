@@ -1,6 +1,6 @@
 [build]
 command = "npm run build"
-publish = "dist/main/browser"
+publish = "dist/landing-bomberos-ux-master/browser"
 
 [context.production]
 command = "npm run build -- --configuration production"
@@ -16,5 +16,4 @@ from = "/*"
 to = "/index.html"
 status = 200
 
-[build.processing.html]
-pretty_urls = true
+

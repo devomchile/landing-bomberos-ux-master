@@ -3,50 +3,62 @@
   height: auto;
 }
 
-.head{
-width: 100%;
-}
-.head img{
-width: 100%;
+.head {
+  width: 100%;
 }
 
-h2{
-text-align: center;
+.head img {
+  width: 100%;
 }
 
-.content{
-display: flex;
-max-width: 100%!important;
-margin: 0px;
-justify-content: space-evenly;
+h2 {
+  text-align: center;
 }
 
-.business-card{
-width: 100%;
-max-width: 300px;
-margin: 0px 5px;
-border-radius: 1rem;
-background-color: #fff;
+.content {
+  display: flex;
+  max-width: 100% !important;
+  margin: 0px;
+  justify-content: space-evenly;
 }
 
-.business-card h5{
-font-size: 26px;
-margin: 0px;
-padding: 0px;
-color: #022859
+.business-card {
+  width: 100%;
+  max-width: 300px;
+  margin: 0px 5px;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.business-card p{
-margin: 0px;
-padding: 0px;
-font-size: 16px;
-color: #022859;
-}
-ul span{
-color: #223240;
-margin-left: 8px;
+.business-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
 }
 
-ul i{
-color: brown;
+.business-card h5 {
+  font-size: 26px;
+  margin: 0px;
+  padding: 0px;
+  color: #022859;
+}
+
+.business-card p {
+  margin: 0px;
+  padding: 0px;
+  font-size: 16px;
+  color: #022859;
+}
+
+ul span {
+  color: #223240;
+  margin-left: 8px;
+}
+
+ul i {
+  color: brown;
 }

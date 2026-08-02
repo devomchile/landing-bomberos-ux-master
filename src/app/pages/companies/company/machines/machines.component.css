@@ -3,39 +3,53 @@
   height: auto;
 }
 
-  .machine-card{
-    padding: 0.1px;
-    border-radius: 1rem;
-    overflow: hidden;
-    width: 100%;
-    box-sizing: border-box;}
+.machine-card {
+  padding: 0.1px;
+  border-radius: 1rem;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .machine-card .image-machine{
-    width: 100%!important;
-    max-height: 200px;
-    object-fit: cover;
-  }
+.machine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
 
-  .card-body{
-    padding: 1rem;
-  }
-  .machine-card i{
-    color: #BF2A45!important;
-    margin-right: 8px;
-  }
-  .machine-card .card-title{
-    margin-top: 0;
-    font-weight: 900;
-    padding-left: 8px;
-    color: #022859
-  }
-  .machine-card .card-text{
-    text-align: justify;
-    width: 100%;
-    margin-top: 0;
-    font-weight: 900;
-    color: #223240;
-    object-fit: cover;
-    height: 15px;
-    
-  }
+.machine-card .image-machine {
+  width: 100% !important;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+.machine-card i {
+  color: #BF2A45 !important;
+  margin-right: 8px;
+}
+
+.machine-card .card-title {
+  margin-top: 0;
+  font-weight: 900;
+  padding-left: 8px;
+  color: #022859;
+}
+
+.machine-card .card-text {
+  text-align: justify;
+  width: 100%;
+  margin-top: 0;
+  font-weight: 900;
+  color: #223240;
+  object-fit: cover;
+  height: 15px;
+}

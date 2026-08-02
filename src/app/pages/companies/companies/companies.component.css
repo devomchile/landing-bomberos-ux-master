@@ -1,4 +1,89 @@
-.wp-block-image img {
-  width: 100% !important;
-  height: auto;
+/* Hero */
+.companies-hero {
+  width: 100%;
+  height: 45vh;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+}
+
+.companies-hero-img {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.companies-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.companies-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.15) 0%,
+    rgba(0, 0, 0, 0.45) 100%
+  );
+  z-index: 1;
+}
+
+.companies-hero-content {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 2rem;
+  z-index: 2;
+  color: white;
+}
+
+.companies-hero-content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.companies-hero-content p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+/* Section */
+.companies-section {
+  padding: 3rem 0;
+}
+
+@media (max-width: 991.98px) {
+  .companies-hero {
+    height: 35vh;
+    min-height: 220px;
+  }
+
+  .companies-hero-content h1 {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .companies-hero {
+    height: 30vh;
+    min-height: 200px;
+  }
+
+  .companies-hero-content {
+    left: 1rem;
+    bottom: 1.5rem;
+  }
+
+  .companies-hero-content h1 {
+    font-size: 1.4rem;
+  }
+
+  .companies-hero-content p {
+    font-size: 0.85rem;
+  }
 }

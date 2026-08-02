@@ -21,7 +21,7 @@
                 class="news-excerpt"
                 [innerHTML]="truncateText(post.excerpt, 150)"
               ></p>
-              <a [routerLink]="['/noticia/', post.slug]" class="news-link"
+              <a [routerLink]="['/noticia', post.slug]" [queryParams]="{ page: currentPage }" class="news-link"
                 >Continuar leyendo
                 <ui-icon name="arrow_forward" size="16px"></ui-icon
               ></a>

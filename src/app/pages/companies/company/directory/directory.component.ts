@@ -11,12 +11,24 @@ import { CommonModule } from '@angular/common';
 import { CardInterfaceDto } from '../../../../shared/interfaces/card-volunteer.dto';
 import { DirectoryDto } from '../../../../shared/interfaces/directory.dto';
 import { ApiTag } from '../../../../services/environments/api-tag/api-tag.enum';
+import { IconComponent } from '../../../../ui';
+import { LoadingComponent } from '../../../home/components/loading/loading.component';
+
+const iconMap: Record<string, string> = {
+  'fa-phone': 'call',
+  'fa-envelope': 'mail',
+  'fa-whatsapp': 'chat',
+  'fa-map-marker-alt': 'location_on',
+  'fa-mobile': 'smartphone',
+  'fa-globe': 'language',
+};
+
 @Component({
   standalone: true,
   selector: 'app-directory',
   templateUrl: './directory.component.html',
   styleUrls: ['./directory.component.css'],
-  imports: [LinksStaffComponent, LinksHomeComponent, CommonModule],
+  imports: [LinksStaffComponent, LinksHomeComponent, CommonModule, IconComponent, LoadingComponent],
 })
 export class DirectoryComponent implements OnInit {
   items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -25,6 +37,7 @@ export class DirectoryComponent implements OnInit {
   featuredMedia: GetMediaResourceDto | null = null;
   directory: any = {};
   businessCards: CardInterfaceDto[] = [];
+  isLoading = true;
 
   constructor(
     private readonly route: ActivatedRoute,
@@ -39,7 +52,16 @@ export class DirectoryComponent implements OnInit {
     });
   }
 
+  getIconName(faClass: string): string {
+    if (!faClass) return 'circle';
+    for (const [fa, material] of Object.entries(iconMap)) {
+      if (faClass.includes(fa)) return material;
+    }
+    return 'circle';
+  }
+
   loadDirectoryData(): void {
+    this.isLoading = true;
     this.directoryService
       .getCompanyDetails(`${ApiTag.DIRECTORY}-${this.name}`)
       .subscribe(
@@ -48,10 +70,6 @@ export class DirectoryComponent implements OnInit {
             this.directory = data[0];
             if (this.directory.content && this.directory.content.rendered) {
               this.extractBusinessCards(this.directory.content.rendered);
-            } else {
-              console.warn(
-                'La propiedad "rendered" no está disponible en los datos de la compañía.'
-              );
             }
             if (
               this.directory._links &&
@@ -62,9 +80,11 @@ export class DirectoryComponent implements OnInit {
               this.loadFeaturedImage(featuredMediaUrl);
             }
           }
+          this.isLoading = false;
         },
         (error) => {
-          console.error('Error al cargar los datos de la compañía:', error);
+          console.error('Error al cargar los datos del directorio:', error);
+          this.isLoading = false;
         }
       );
   }
@@ -80,9 +100,7 @@ export class DirectoryComponent implements OnInit {
   extractBusinessCards(content: string): void {
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, 'text/html');
-    const businessCardElements = doc.querySelectorAll(
-      '.wp-block-business-card'
-    );
+    const businessCardElements = doc.querySelectorAll('.wp-block-business-card');
 
     this.businessCards = Array.from(businessCardElements).map(
       (element, index) => {
@@ -92,21 +110,18 @@ export class DirectoryComponent implements OnInit {
           try {
             cardData = JSON.parse(attributes);
           } catch (error) {
-            console.error(
-              'Error al parsear los atributos de la tarjeta de negocio:',
-              error
-            );
+            console.error('Error al parsear atributos:', error);
           }
         }
         const name = cardData.name || '';
         const title = cardData.title || '';
-        const contacts = cardData.contacts.map((contact: any, indexs: any) => ({
-          id: `contact-${indexs}`,
+        const contacts = (cardData.contacts || []).map((contact: any, idx: number) => ({
+          id: `contact-${idx}`,
           iconClass: contact.icon?.class || '',
           text: contact.text || '',
         }));
 
-        return { id: `card-${index}`, name, title, contacts }; // Usa índice como parte del ID
+        return { id: `card-${index}`, name, title, contacts };
       }
     );
   }

@@ -3,7 +3,7 @@ import { Observable, Subscription, tap } from 'rxjs';
 import { GetAllPostsService } from '../../../../services/post';
 import { DatePipe, CommonModule } from '@angular/common';
 import { LoadingComponent } from '../loading/loading.component';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
 import { GetAllPostsDto } from '../../../../services/post/get-all-posts/dtos';
 import { IconComponent } from '../../../../ui';
@@ -26,10 +26,17 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly postsService: GetAllPostsService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      const page = +params['page'];
+      if (page && page > 0) {
+        this.currentPage = page;
+      }
+    });
     this.loadPosts();
   }
 

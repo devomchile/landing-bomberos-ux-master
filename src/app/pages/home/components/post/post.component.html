@@ -1,32 +1,43 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-9 col-12">
-      <div class="row w-100">
-        <div
-          class="col-12 d-flex align-items-top justify-content-center content-img p-0"
-          *ngIf="item.featuredMedia.source_url"
-        >
-          <img
-            [src]="item.featuredMedia.source_url"
-            alt="Featured Image"
-            alt="Post Image"
-            class="shadow-sm p-3 mb-5 bg-body rounded"
-            style="max-width: auto"
-          />
+    <div class="col-lg-9">
+      <div class="post-hero glass-card">
+        @if(item.featuredMedia.source_url){
+        <div class="post-hero-img">
+          <img [src]="item.featuredMedia.source_url" alt="Post Image" />
         </div>
-        <div class="col-12 py-2">
-          <span *ngFor="let category of categories" class="badge bg-danger mx-1"
-            >{{ category }}
-          </span>
-        </div>
-        <div class="col-12 d-flex flex-column position-static mb-2">
-          <h4 class="title-post">{{ item.title.rendered }}</h4>
-          <div class="mb-1 text-muted">{{ item.date }}</div>
-          <div class="content-post" [innerHTML]="item.content.rendered"></div>
+        }
+        <div class="post-hero-body">
+          <div class="post-badges">
+            @for(category of categories; track category){
+            <span class="news-badge">{{ category }}</span>
+            }
+          </div>
+          <h1>{{ item.title.rendered }}</h1>
+          <div class="post-meta">
+            <span class="meta-item">
+              <ui-icon name="calendar_today" size="16px"></ui-icon>
+              {{ formatDate(item.date) }}
+            </span>
+            <a [routerLink]="['/novedades']" [queryParams]="{ page: returnPage }" class="post-back">
+              <ui-icon name="arrow_back" size="16px"></ui-icon>
+              Volver a novedades
+            </a>
+          </div>
         </div>
       </div>
+
+      <div class="post-content glass-card mt-4">
+        <div class="content-post" [innerHTML]="item.content.rendered"></div>
+      </div>
+      <div class="mt-4">
+        <a [routerLink]="['/novedades']" class="post-back">
+          <ui-icon name="arrow_back" size="16px"></ui-icon>
+          Volver a novedades
+        </a>
+      </div>
     </div>
-    <div class="col-md-3 col-12">
+    <div class="col-lg-3">
       <app-links-home></app-links-home>
     </div>
   </div>

@@ -112,7 +112,10 @@
               class="news-excerpt"
               [innerHTML]="truncateText(item.excerpt, 90)"
             ></p>
-            <a [routerLink]="['/noticia', item.slug]" class="news-link"
+            <a
+              [routerLink]="['/noticia', item.slug]"
+              [queryParams]="{ page: 1 }"
+              class="news-link"
               >Continuar leyendo
               <ui-icon name="arrow_forward" size="16px"></ui-icon
             ></a>
@@ -338,7 +341,7 @@
   </div>
 </section>
 
-<section class="contacto" id="contact">
+<section class="contacto mt-4" id="contact">
   <app-contact-form></app-contact-form>
 
   <!-- Resto de tu código HTML aquí -->

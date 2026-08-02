@@ -11,13 +11,4 @@ command = "npm run build -- --configuration development"
 [build.environment]
 NODE_VERSION = "22"
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
-
-[[plugins]]
-package = "@netlify/angular-runtime"
-disabled = true
 

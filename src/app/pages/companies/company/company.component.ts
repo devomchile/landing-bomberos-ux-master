@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { LinksStaffComponent } from '../../../shared/components/links-staff/links-staff.component';
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { CompanieService, CompaniesDto } from '../../../services/companies';
@@ -14,8 +14,6 @@ import {
     templateUrl: './company.component.html',
     styleUrls: ['./company.component.css'],
     imports: [
-    RouterOutlet,
-    RouterModule,
     LinksStaffComponent,
     LinksHomeComponent
 ]

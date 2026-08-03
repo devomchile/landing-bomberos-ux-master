@@ -23,11 +23,9 @@
   cursor: pointer;
 }
 
-.footer-wave {
-  display: block;
-  width: 100%;
-  height: 60px;
-  margin-bottom: -1px;
+.footer {
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #dc3545, #ffc107, #dc3545) 1;
 }
 
 .footer-link {
@@ -58,6 +56,7 @@
 .footer-emergency:hover {
   color: #ff4444;
 }
+
 
 .footer-text {
   color: rgba(255, 255, 255, 0.5);

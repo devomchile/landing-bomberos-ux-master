@@ -32,6 +32,36 @@
   margin-bottom: -1px;
 }
 
+.footer-wave path {
+  animation: waveSway 6s ease-in-out infinite;
+}
+
+.footer-wave path:nth-child(2) {
+  animation: waveSwayReverse 5s ease-in-out infinite;
+}
+
+.footer-wave path:nth-child(3) {
+  animation: waveSway 4s ease-in-out infinite;
+}
+
+@keyframes waveSway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(12px);
+  }
+}
+
+@keyframes waveSwayReverse {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
 .footer-link {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;

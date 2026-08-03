@@ -33,32 +33,60 @@
 }
 
 .footer-wave path {
-  animation: waveSway 6s ease-in-out infinite;
+  animation:
+    waveSway 6s ease-in-out infinite,
+    waveUpDown 3s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .footer-wave path:nth-child(2) {
-  animation: waveSwayReverse 5s ease-in-out infinite;
+  animation:
+    waveSwayReverse 7s ease-in-out infinite,
+    waveUpDown 4s ease-in-out 0.5s infinite;
 }
 
 .footer-wave path:nth-child(3) {
-  animation: waveSway 4s ease-in-out infinite;
+  animation:
+    waveSway 5s ease-in-out infinite,
+    waveUpDown 3.5s ease-in-out 1s infinite;
 }
 
 @keyframes waveSway {
   0%, 100% {
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(8px) translateY(-3px);
   }
   50% {
-    transform: translateX(12px);
+    transform: translateX(0) translateY(0);
+  }
+  75% {
+    transform: translateX(-8px) translateY(3px);
   }
 }
 
 @keyframes waveSwayReverse {
   0%, 100% {
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-6px) translateY(4px);
   }
   50% {
-    transform: translateX(-10px);
+    transform: translateX(0) translateY(0);
+  }
+  75% {
+    transform: translateX(6px) translateY(-4px);
+  }
+}
+
+@keyframes waveUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
   }
 }
 

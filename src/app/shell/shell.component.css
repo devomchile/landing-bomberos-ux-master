@@ -25,6 +25,12 @@
 
 
 
+.footer-gradient {
+  height: 100px;
+  margin-bottom: -1px;
+  background: linear-gradient(to bottom, transparent, #212529);
+}
+
 .footer-wave {
   display: block;
   width: 100%;
@@ -98,4 +104,8 @@
   .movile-nav {
     display: none !important;
   }
+}
+
+[data-theme="dark"] .footer-gradient {
+  background: linear-gradient(to bottom, transparent, #0f0f23);
 }

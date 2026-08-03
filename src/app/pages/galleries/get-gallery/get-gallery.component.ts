@@ -16,15 +16,10 @@ import {
 } from '../../../services/features/gallery/dtos';
 
 @Component({
-    selector: 'app-get-gallery',
-    imports: [
-    IconComponent,
-    LinksHomeComponent,
-    LoadingComponent,
-    ImageModalComponent
-],
-    templateUrl: './get-gallery.component.html',
-    styleUrls: ['./get-gallery.component.css']
+  selector: 'app-get-gallery',
+  imports: [IconComponent, LinksHomeComponent, LoadingComponent],
+  templateUrl: './get-gallery.component.html',
+  styleUrls: ['./get-gallery.component.css'],
 })
 export class GetGalleryComponent implements OnInit, OnDestroy {
   gallery$: Observable<GetGalleryByIdDto> | undefined;

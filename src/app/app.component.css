@@ -1,5 +1,4 @@
 
-
 /* Global styles */
 body {
     font-family: "Montserrat Alternates", sans-serif!important;
@@ -12,7 +11,9 @@ body {
 }
 
 .bg-danger {
-    background-color: #dc3545 !important;
+    background-color: rgba(220, 53, 69, 0.85) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .text-muted {
@@ -24,11 +25,13 @@ body {
 }
 
 .rounded {
-    border-radius: .25rem !important;
+    border-radius: .5rem !important;
 }
 
 .shadow {
-    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 h3 {
@@ -38,9 +41,15 @@ h3 {
 .btn-outline-danger {
     color: #dc3545;
     border-color: #dc3545;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: .5rem;
 }
 
 .btn-outline-danger:hover {
-    background-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #fff;
 }

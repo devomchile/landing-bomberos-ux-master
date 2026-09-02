@@ -1,5 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
@@ -17,23 +17,28 @@ import { PostulationFormComponent } from './components/forms/postulation-form/po
 import { GetAllPostsDto } from '../../services/post/get-all-posts/dtos';
 import { tap } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
+import { IconComponent } from '../../ui';
+import { WeatherChipComponent } from '../../ui';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
+    selector: 'app-home',
+    imports: [
     RouterModule,
     ReactiveFormsModule,
+    IconComponent,
+    WeatherChipComponent,
     IndexCarouselComponent,
     LoadingComponent,
     GetGalleriesComponent,
     ContactFormComponent,
-    PostulationFormComponent,
-  ],
-  providers: [DatePipe],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+    PostulationFormComponent
+],
+    providers: [DatePipe],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    host: {
+        '(window:scroll)': 'onWindowScroll',
+    }
 })
 export class HomeComponent implements OnInit {
   isLoading: boolean = true;
@@ -96,7 +101,6 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  @HostListener('window:scroll', [])
   onWindowScroll() {
     this.parallax();
   }

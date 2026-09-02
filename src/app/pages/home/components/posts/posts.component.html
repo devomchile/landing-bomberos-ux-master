@@ -8,61 +8,50 @@
           <app-loading></app-loading>
         </div>
         } @if(!isLoading){ @for (post of posts ; track post.id) {
-        <div
-          class="card-post col-lg-4 col-md-12 border overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative bg-light"
-        >
-          <div
-            class="col-12 d-flex align-items-center justify-content-center p-0"
-            style="max-height: 200px; overflow: hidden"
-          >
-            <img
-              [src]="post.imageUrl"
-              alt="Post Image"
-              class="img-fluid rounded image-post"
-              style="max-width: 105%; height: auto; object-fit: cover"
-            />
-          </div>
-          <div class="col-12">
-            <span class="badge bg-danger mx-1 badge-category">{{
-              post.category
-            }}</span>
-          </div>
-          <div class="col-12 d-flex flex-column position-static mb-2">
-            <h3 class="title-post">
-              {{ truncateText(post.title, 30) }}
-            </h3>
-            <div class="text-muted">{{ formatDate(post.date) }}</div>
-            <p
-              class="text-post"
-              [innerHTML]="truncateText(post.excerpt, 150)"
-            ></p>
-            <a
-              [routerLink]="['/noticia/', post.slug]"
-              class="btn btn-outline-danger mt-auto"
-              >Continuar leyendo</a
-            >
+        <div class="col-lg-4 col-md-12 mt-4">
+          <div class="news-card glass-card">
+            <div class="news-card-img">
+              <img [src]="post.imageUrl" alt="Post Image" class="news-img" />
+            </div>
+            <div class="news-card-body">
+              <span class="news-badge">{{ post.category }}</span>
+              <h3 class="news-title">{{ truncateText(post.title, 30) }}</h3>
+              <div class="news-date">{{ formatDate(post.date) }}</div>
+              <p
+                class="news-excerpt"
+                [innerHTML]="truncateText(post.excerpt, 150)"
+              ></p>
+              <a [routerLink]="['/noticia', post.slug]" [queryParams]="{ page: currentPage }" class="news-link"
+                >Continuar leyendo
+                <ui-icon name="arrow_forward" size="16px"></ui-icon
+              ></a>
+            </div>
           </div>
         </div>
         } }
       </div>
       @if(!isLoading){
-      <div class="pagination">
+      <div class="pagination glass-pagination">
         <button
           type="button"
-          class="btn btn-outline-warning page-link"
+          class="page-btn"
           (click)="previousPage()"
           [disabled]="currentPage === 1"
         >
+          <ui-icon name="chevron_left"></ui-icon>
           Anterior
         </button>
-        <span>Página {{ currentPage }} de {{ totalPages }}</span>
+        <span class="page-indicator"
+          >{{ currentPage }} de {{ totalPages }}</span
+        >
         <button
           type="button"
-          class="btn btn-outline-warning page-link"
+          class="page-btn"
           (click)="nextPage()"
           [disabled]="currentPage === totalPages"
         >
           Siguiente
+          <ui-icon name="chevron_right"></ui-icon>
         </button>
       </div>
       }

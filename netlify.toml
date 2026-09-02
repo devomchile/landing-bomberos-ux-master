@@ -1,0 +1,14 @@
+[build]
+command = "npm run build"
+publish = "dist/landing-bomberos-ux-master/browser"
+
+[context.production]
+command = "npm run build -- --configuration production"
+
+[context.develop]
+command = "npm run build -- --configuration development"
+
+[build.environment]
+NODE_VERSION = "22"
+
+

@@ -1,25 +1,39 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-9">
+      @if(isLoading){
+      <app-loading />
+      }@else {
       <div class="galleries">
         <h2>Galerías</h2>
-        <p>Compartimos nuestra galería de imagenes</p>
+        <p>Compartimos nuestra galería de imágenes</p>
         <div class="col-md-12">
           <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
             @for (gallery of galleries; track gallery.gid) {
-            <a [routerLink]="['/galerias', gallery.gid]">
-              <div class="gallery-card shadow-lg mb-5 bg-body">
-                <img
-                  [src]="gallery.random_image.url"
-                  class="card-img-top image-gallery"
-                  alt="{{ gallery.random_image.title }}"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <i class="fas fa-image" aria-hidden="true"></i
-                    >{{ gallery.title }}
+            <a
+              [routerLink]="['/galerias', gallery.gid]"
+              class="gallery-card-link"
+            >
+              <div class="gallery-card glass-card">
+                <div class="gallery-card-img-wrapper">
+                  <img
+                    [src]="gallery.random_image.url"
+                    class="gallery-card-img"
+                    alt="{{ gallery.random_image.title }}"
+                  />
+                  <span class="gallery-card-date">{{
+                    gallery.image_date
+                  }}</span>
+                </div>
+                <div class="gallery-card-body">
+                  <h5 class="gallery-card-title">
+                    <ui-icon
+                      name="collections"
+                      size="20px"
+                      color="#dc3545"
+                    ></ui-icon>
+                    {{ gallery.title }}
                   </h5>
-                  <span class="span-date">{{ gallery.image_date }}</span>
                 </div>
               </div>
             </a>
@@ -28,25 +42,30 @@
         </div>
       </div>
 
-      <div class="pagination">
+      <div class="pagination glass-pagination">
         <button
           type="button"
-          class="btn btn-outline-warning page-link"
+          class="page-btn"
           (click)="previousPage()"
           [disabled]="currentPage === 1"
         >
+          <ui-icon name="chevron_left"></ui-icon>
           Anterior
         </button>
-        <span>Página {{ currentPage }} de {{ totalPages }}</span>
+        <span class="page-indicator"
+          >{{ currentPage }} de {{ totalPages }}</span
+        >
         <button
           type="button"
-          class="btn btn-outline-warning page-link"
+          class="page-btn"
           (click)="nextPage()"
           [disabled]="currentPage === totalPages"
         >
           Siguiente
+          <ui-icon name="chevron_right"></ui-icon>
         </button>
       </div>
+      }
     </div>
     <div class="col-lg-3">
       <app-links-home></app-links-home>

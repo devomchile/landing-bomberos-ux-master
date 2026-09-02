@@ -1,75 +1,69 @@
-<!-- Existing code -->
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-9">
       @if(isLoading){
+
       <app-loading></app-loading>
       }@else {
-      <h3>{{ gallery?.title }}</h3>
-      <div class="gallery-description">
-        <p>{{ gallery?.description }}</p>
-      </div>
-      <div class="row details col-lg-12">
-        <div class="sub-detail col-lg-8">
-          <p>
-            Publicado el:
-            <span>{{ gallery?.date }}</span>
-          </p>
-        </div>
-        <div class="sub-detail col-lg-4">
-          <p>
-            Esta galería contiene:
-            <span>{{ pagination?.total }}</span>
-            imágenes.
-          </p>
+      <div class="gallery-detail-header glass-card">
+        <h3>{{ gallery?.title }}</h3>
+        @if(gallery?.description){
+        <p class="gallery-detail-desc">{{ gallery?.description }}</p>
+        }
+        <div class="gallery-detail-meta">
+          <span class="meta-item">
+            <ui-icon name="calendar_today" size="16px"></ui-icon>
+            {{ gallery?.date }}
+          </span>
+          <span class="meta-item">
+            <ui-icon name="collections" size="16px"></ui-icon>
+            {{ pagination?.total }} imágenes
+          </span>
         </div>
       </div>
-      <div class="row row-cols-1 row-cols-md-3 g-40 mt-3">
+      <div class="row row-cols-1 row-cols-md-3 g-3 mt-4">
         @for(image of dataImage; track image.id){
         <div class="col">
           <div
-            class="image-card shadow-lg mb-5 bg-body"
+            class="gallery-image-card glass-card"
             (click)="openModal(image.url, image.title)"
           >
-            <img
-              [src]="image.url"
-              class="card-img-top image-machine"
-              alt="image.alt"
-            />
-            <div class="card-body">
-              <h5 class="card-title">
-                {{ image.title }}
-              </h5>
+            <div class="gallery-image-img">
+              <img [src]="image.url" alt="image.alt" />
+            </div>
+            <div class="gallery-image-body">
+              <h5>{{ image.title }}</h5>
             </div>
           </div>
         </div>
         }
       </div>
-      <div class="pagination">
+      <div class="pagination glass-pagination mt-4">
         <button
           type="button"
-          class="btn btn-outline-warning page-link"
+          class="page-btn"
           (click)="previousPage()"
           [disabled]="pagination?.current_page === 1"
         >
+          <ui-icon name="chevron_left"></ui-icon>
           Anterior
         </button>
-        <span
-          >Página {{ pagination?.current_page }} de
-          {{ pagination?.total_pages }}</span
+        <span class="page-indicator"
+          >{{ pagination?.current_page }} de {{ pagination?.total_pages }}</span
         >
         <button
           type="button"
-          class="btn btn-outline-warning page-link"
+          class="page-btn"
           (click)="nextPage()"
           [disabled]="pagination?.current_page === pagination?.total_pages"
         >
           Siguiente
+          <ui-icon name="chevron_right"></ui-icon>
         </button>
       </div>
       }
     </div>
-    <div class="col-md-4">
+    <div class="col-lg-3">
       <app-links-home></app-links-home>
     </div>
   </div>

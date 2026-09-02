@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GetPostService } from '../../../../services/post/get-post';
-import { DatePipe, CommonModule } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { LinksHomeComponent } from '../../../../shared/components/links-home/links-home.component';
 import { RouterModule } from '@angular/router';
 import { GetCategoryService } from '../../../../services/resources/get-category.service';
@@ -10,20 +10,21 @@ import {
   GetMediaResourceDto,
   GetMediaResourceService,
 } from '../../../../services/resources';
+import { IconComponent } from '../../../../ui';
 
 @Component({
-  selector: 'app-post',
-  standalone: true,
-  providers: [DatePipe],
-  imports: [CommonModule, RouterModule, LinksHomeComponent],
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
+    selector: 'app-post',
+    providers: [DatePipe],
+    imports: [RouterModule, LinksHomeComponent, IconComponent],
+    templateUrl: './post.component.html',
+    styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
   slug!: string;
   item: any;
   categories: string[] = [];
   featuredMedia: GetMediaResourceDto | null = null;
+  returnPage = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +35,9 @@ export class PostComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.returnPage = +params['page'] || 1;
+    });
     this.route.params.subscribe((params) => {
       this.slug = params['slug-noticia'];
       this.loadPost(this.slug);

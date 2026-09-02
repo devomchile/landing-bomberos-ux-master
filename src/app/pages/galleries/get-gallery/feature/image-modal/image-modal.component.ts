@@ -1,13 +1,13 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { IconComponent } from '../../../../../ui';
 
 @Component({
-  selector: 'app-image-modal',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './image-modal.component.html',
-  styleUrls: ['./image-modal.component.css'],
+    selector: 'app-image-modal',
+    imports: [IconComponent],
+    templateUrl: './image-modal.component.html',
+    styleUrls: ['./image-modal.component.css']
 })
 export class ImageModalComponent {
   @Input() imageUrl!: string;
@@ -16,6 +16,6 @@ export class ImageModalComponent {
   constructor(public activeModal: NgbActiveModal) {}
 
   closeModal(): void {
-    this.activeModal.dismiss(); // Cierra el modal
+    this.activeModal.dismiss();
   }
 }

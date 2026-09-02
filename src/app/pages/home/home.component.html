@@ -4,14 +4,15 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-12 text-center mb-4">
-        <h3 class="text-center">¿Tienes alguna emergencia?</h3>
+        <h1 class="text-center">¿Tienes alguna emergencia?</h1>
+        <p>Llama con solo un click <ui-icon name="touch_app"></ui-icon></p>
       </div>
     </div>
     <div class="row mr-0 ml-0">
       <div class="col-md-3 col-6 mb-2 mb-md-0 contact-tarjet">
         <a href="tel:632316232" style="text-decoration: none">
           <div class="block bg-danger text-white text-center rounded">
-            <i class="fab fa-gripfire fa-3x"></i>
+            <ui-icon name="local_fire_department" size="3rem"></ui-icon>
             <h4>Emergencia</h4>
             <div>Tel: (63) 2-316-232</div>
           </div>
@@ -20,7 +21,7 @@
       <div class="col-md-3 col-6 mb-2 mb-md-0 contact-tarjet">
         <a href="tel:130" style="text-decoration: none">
           <div class="block bg-warning text-white text-center rounded">
-            <i class="fas fa-tree fa-3x"></i>
+            <ui-icon name="forest" size="3rem"></ui-icon>
             <h4>CONAF</h4>
             <div>Tel: 130</div>
           </div>
@@ -29,7 +30,7 @@
       <div class="col-md-3 col-6 mb-2 mb-md-0 contact-tarjet">
         <a href="tel:632563220" style="text-decoration: none">
           <div class="block bg-success text-white text-center rounded">
-            <i class="fas fa-car fa-3x"></i>
+            <ui-icon name="directions_car" size="3rem"></ui-icon>
             <h4>Carabineros</h4>
             <div>Tel: (63) 2-563-220</div>
           </div>
@@ -38,7 +39,7 @@
       <div class="col-md-3 col-6 mb-2 mb-md-0 contact-tarjet">
         <a href="tel:632316231" style="text-decoration: none">
           <div class="block bg-info text-white text-center rounded">
-            <i class="fas fa-hospital fa-3x"></i>
+            <ui-icon name="local_hospital" size="3rem"></ui-icon>
             <h4>Cesfam</h4>
             <div>Tel: (63) 2-316-231</div>
           </div>
@@ -47,7 +48,37 @@
     </div>
   </div>
 </section>
-<section class="separator-img">
+
+<section class="weather-section !pb-0">
+  <div class="weather-section-bg">
+    <svg class="banner-wave" viewBox="0 0 1000 120" preserveAspectRatio="none">
+      <path
+        d="M0 40 C200 10, 400 70, 600 30 C800 -10, 900 60, 1000 35"
+        fill="none"
+        stroke="#4fc3f7"
+        stroke-width="3"
+        stroke-linecap="round"
+        opacity="0.5"
+      />
+      <path
+        d="M0 60 C300 35, 500 85, 700 50 C850 25, 950 70, 1000 55"
+        fill="none"
+        stroke="#29b6f6"
+        stroke-width="2"
+        stroke-linecap="round"
+        opacity="0.3"
+      />
+    </svg>
+    <ui-weather-chip></ui-weather-chip>
+    <p
+      class="text-center text-md text-white/50 mt-1 font-medium tracking-wider"
+    >
+      Malalhue, Chile
+    </p>
+  </div>
+</section>
+
+<section class="separator-img !mt-0">
   <div class="w-100 parallax-wrapper">
     <a href="https://www.bomberos.cl" target="_blank">
       <img src="./assets/images/banner_bomberos.jpg" class="img-fluid w-100" />
@@ -59,7 +90,7 @@
   <div class="container py-4">
     <div class="row">
       <div class="col-12 text-center mb-4">
-        <h3 class="text-center">Noticias</h3>
+        <h2 class="text-center">Noticias</h2>
       </div>
     </div>
     @if(isLoading){
@@ -68,40 +99,26 @@
     <div class="row novedades">
       @for(item of posts; track item.id){
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <div
-          class="row m-0 border rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative bg-light"
-        >
-          <div
-            class="col-12 d-flex align-items-center justify-content-center p-0"
-            style="max-height: 230px; overflow: hidden"
-          >
-            <img
-              [src]="item.imageUrl"
-              alt="Post Image"
-              class="img-fluid rounded"
-              style="max-width: 100%; max-height: auto; object-fit: cover"
-            />
+      <div class="col-12 col-md-6 col-lg-4 p-2">
+        <div class="news-card glass-card">
+          <div class="news-card-img">
+            <img [src]="item.imageUrl" alt="Post Image" class="news-img" />
           </div>
-          <div class="col-12 py-2">
-            <span class="badge bg-danger mx-1">{{ item.category }}</span>
-          </div>
-          <div
-            class="body-card-novedades col-12 d-flex flex-column position-static mb-0"
-          >
-            <h4>
-              {{ truncateText(item.title, 50) }}
-            </h4>
-            <div class="date text-muted">{{ formatData(item.date) }}</div>
+          <div class="news-card-body">
+            <span class="news-badge">{{ item.category }}</span>
+            <h4 class="news-title">{{ truncateText(item.title, 50) }}</h4>
+            <div class="news-date">{{ formatData(item.date) }}</div>
             <p
-              class="text-novedades"
+              class="news-excerpt"
               [innerHTML]="truncateText(item.excerpt, 90)"
             ></p>
             <a
               [routerLink]="['/noticia', item.slug]"
-              class="btn btn-outline-danger"
-              >Continuar leyendo</a
-            >
+              [queryParams]="{ page: 1 }"
+              class="news-link"
+              >Continuar leyendo
+              <ui-icon name="arrow_forward" size="16px"></ui-icon
+            ></a>
           </div>
         </div>
       </div>
@@ -109,21 +126,22 @@
       }
     </div>
     }
-    <div class="container col-12">
-      <a [routerLink]="['/novedades']" class="btn btn-outline-danger col-12"
-        >Ver más</a
-      >
+    <div class="gallery-cta">
+      <a [routerLink]="['/novedades']" class="gallery-btn">
+        Ver más novedades
+        <ui-icon name="arrow_forward" size="18px"></ui-icon>
+      </a>
     </div>
   </div>
 </section>
 
-<section id="ayudanos" class="bg-light py-5 mt-3">
+<!-- <section id="ayudanos" class="bg-light py-5 mt-3">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center mb-4">
         <h3 class="text-center">
           Ayudanos a seguir ayudando!
-          <i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
+          <ui-icon name="volunteer_activism" aria-hidden="true"></ui-icon>
         </h3>
         <p>
           Salvar vidas tiene un costo muy alto en operación y equipamiento y es
@@ -168,7 +186,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <section class="section-blog">
   <div class="container py-4">
@@ -180,62 +198,73 @@
   </div>
   <div class="container">
     <div class="row gy-4">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body bg-danger">
-            <h5 class="card-title text-light text-center">
-              Cuerpo de Bomberos Malalhue
-            </h5>
-            <a
-              [routerLink]="['/companies', 'directorio-general']"
-              class="btn btn-warning regular-button"
-              >Directorio</a
-            >
+      <div class="col-12">
+        <a
+          [routerLink]="['/companies', 'directorio-general']"
+          class="company-main-card glass-card"
+        >
+          <div class="company-main-content">
+            <div class="company-main-icon">
+              <ui-icon name="shield" size="2.5rem" color="white"></ui-icon>
+            </div>
+            <div class="company-main-text">
+              <h3>Cuerpo de Bomberos Malalhue</h3>
+              <p>Directorio General</p>
+            </div>
+            <span class="company-main-arrow">
+              <ui-icon name="arrow_forward" size="20px"></ui-icon>
+            </span>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <div class="company-card glass-card">
+          <div class="company-card-img">
+            <img
+              src="./assets/images/companias/primera.jpeg"
+              alt="Primera Compañía"
+            />
+          </div>
+          <div class="company-card-body">
+            <h4>Primera Compañía</h4>
+            <p>Bomba Malalhue</p>
+            <a [routerLink]="['/companies', 'primera']" class="company-link">
+              Conoce más <ui-icon name="arrow_forward" size="16px"></ui-icon>
+            </a>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
-          <img
-            src="./assets/images/companias/primera.jpeg"
-            class="card-img-top"
-            alt="Primera Compañía"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Primera</h5>
-            <a [routerLink]="['/companies', 'primera']" class="btn btn-primary"
-              >Conoce más</a
-            >
+        <div class="company-card glass-card">
+          <div class="company-card-img">
+            <img
+              src="./assets/images/companias/segunda.jpg"
+              alt="Segunda Compañía"
+            />
+          </div>
+          <div class="company-card-body">
+            <h4>Segunda Compañía</h4>
+            <p>Bomba Malalhue</p>
+            <a [routerLink]="['/companies', 'segunda']" class="company-link">
+              Conoce más <ui-icon name="arrow_forward" size="16px"></ui-icon>
+            </a>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card">
-          <img
-            src="./assets/images/companias/segunda.jpg"
-            class="card-img-top"
-            alt="Segunda Compañía"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Segunda</h5>
-            <a [routerLink]="['/companies', 'segunda']" class="btn btn-primary"
-              >Conoce más</a
-            >
+        <div class="company-card glass-card">
+          <div class="company-card-img">
+            <img
+              src="./assets/images/companias/tercera.jpg"
+              alt="Tercera Compañía"
+            />
           </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img
-            src="./assets/images/companias/tercera.jpg"
-            class="card-img-top"
-            alt="Tercera Compañía"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Tercera</h5>
-            <a [routerLink]="['/companies', 'tercera']" class="btn btn-primary"
-              >Conoce más</a
-            >
+          <div class="company-card-body">
+            <h4>Tercera Compañía</h4>
+            <p>Bomba Malalhue</p>
+            <a [routerLink]="['/companies', 'tercera']" class="company-link">
+              Conoce más <ui-icon name="arrow_forward" size="16px"></ui-icon>
+            </a>
           </div>
         </div>
       </div>
@@ -243,23 +272,65 @@
   </div>
 </section>
 
-<section class="postulation bg-light py-5 mt-3" id="postulation">
+<section class="postulation-section" id="postulation">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-12 formulario-postular">
-        <h3 class="mb-1">Quiero postular</h3>
-        <app-postulation-form></app-postulation-form>
-        <p>
-          Déjanos tu correo, y recibirás información para postular a nuestras
-          filas.
-        </p>
+    <div class="row align-items-stretch g-4">
+      <div class="col-lg-6">
+        <div class="postulation-form-card glass-card">
+          <div class="postulation-header">
+            <div class="postulation-icon">
+              <ui-icon name="person_add" size="2rem" color="white"></ui-icon>
+            </div>
+            <div>
+              <h3>Quiero postular</h3>
+              <p>
+                Déjanos tu correo y recibe información para unirte a nuestras
+                filas
+              </p>
+            </div>
+          </div>
+          <app-postulation-form></app-postulation-form>
+        </div>
       </div>
-      <div class="w-100">
-        <img
-          src="../.././/../assets/images/banner-postulacion.png"
-          alt=""
-          class="w-100"
-        />
+      <div class="col-lg-6">
+        <div class="postulation-banner glass-dark">
+          <svg
+            class="banner-wave"
+            viewBox="0 0 1000 120"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0 40 C200 10, 400 70, 600 30 C800 -10, 900 60, 1000 35"
+              fill="none"
+              stroke="#4fc3f7"
+              stroke-width="3"
+              stroke-linecap="round"
+              opacity="0.5"
+            />
+            <path
+              d="M0 60 C300 35, 500 85, 700 50 C850 25, 950 70, 1000 55"
+              fill="none"
+              stroke="#29b6f6"
+              stroke-width="2"
+              stroke-linecap="round"
+              opacity="0.3"
+            />
+          </svg>
+          <div class="banner-content">
+            <div class="banner-icon-circle">
+              <ui-icon
+                name="local_fire_department"
+                size="2.5rem"
+                color="white"
+              ></ui-icon>
+            </div>
+            <h2>¡Sé parte de nosotros!</h2>
+            <p>
+              Únete al Cuerpo de Bomberos Malalhue y ayuda a proteger tu
+              comunidad
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -270,7 +341,7 @@
   </div>
 </section>
 
-<section class="contacto" id="contact">
+<section class="contacto mt-4" id="contact">
   <app-contact-form></app-contact-form>
 
   <!-- Resto de tu código HTML aquí -->

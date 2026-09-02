@@ -2,10 +2,10 @@ import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { GalleriesService } from '../../../services';
-import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
 import { LinksHomeComponent } from '../../../shared/components/links-home/links-home.component';
 import { LoadingComponent } from '../../home/components/loading/loading.component';
+import { IconComponent } from '../../../ui';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ImageModalComponent } from './feature/image-modal';
 import {
@@ -17,14 +17,7 @@ import {
 
 @Component({
   selector: 'app-get-gallery',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterLink,
-    LinksHomeComponent,
-    LoadingComponent,
-    ImageModalComponent,
-  ],
+  imports: [IconComponent, LinksHomeComponent, LoadingComponent],
   templateUrl: './get-gallery.component.html',
   styleUrls: ['./get-gallery.component.css'],
 })

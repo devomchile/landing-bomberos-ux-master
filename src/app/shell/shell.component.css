@@ -1,10 +1,15 @@
-
 .sticky-nav {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
 }
 
 .sticky-top {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .close-button {
@@ -18,63 +23,79 @@
   cursor: pointer;
 }
 
-/* Estilos para el menú móvil */
-.mobile-menu-overlay {
-  position: fixed;
-  top: 0;
-  left: -100%; /* Inicialmente fuera de la vista a la izquierda */
+
+
+.footer-wave {
+  display: block;
   width: 100%;
-  height: 100%;
-  background-color: red;
-  color: white;
+  height: 60px;
+  margin-bottom: -1px;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #dc3545;
+  padding-left: 4px;
+}
+
+.footer-emergency {
+  color: #dc3545;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s ease;
+}
+
+.footer-emergency:hover {
+  color: #ff4444;
+}
+
+
+.footer-text {
+  color: rgba(255, 255, 255, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.social-icons {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-icon {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
-  transition: left 0.5s; /* Transición suave de izquierda a derecha */
-}
-
-.mobile-menu-overlay ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-menu-overlay.active {
-  left: 0; /* Menú en la vista */
-}
-
-.mobile-menu-overlay li {
-  margin-bottom: 1rem;
-}
-
-.mobile-menu-overlay a {
-  color: white !important;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
   text-decoration: none;
-  font-size: 1.5rem;
+  transition: all 0.3s ease;
 }
 
-.mobile-menu-overlay a:hover {
-  text-decoration: underline;
+.social-icon:hover {
+  background: #dc3545;
+  transform: translateY(-2px);
+  color: #fff;
 }
 
-/* Hide desktop menu on small devices */
-@media (max-width: 767.98px) { /* Dispositivos móviles */
-  .movile-nav{
-      display: none !important;
+@media (max-width: 767.98px) {
+  .movile-nav {
+    display: none !important;
   }
-}
-
-
-/* Bootstrap Custom Variables */
-:root {
-    --primary: #0073dd;
-    --secondary: #868e96;
-    --success: #28a745;
-    --info: #17a2b8;
-    --warning: #ffc107;
-    --danger: #dc3545;
-    --light: #f8f9fa;
-    --dark: #343a40;
 }

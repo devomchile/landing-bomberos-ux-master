@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {
   NavigationEnd,
   Router,
@@ -13,18 +13,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { filter } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
+    selector: 'app-root',
+    imports: [
     RouterModule,
-    CommonModule,
     RouterOutlet,
     ShellComponent,
     NgbModule,
-    MatSnackBarModule,
-  ],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+    MatSnackBarModule
+],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   menuOption: string = '';

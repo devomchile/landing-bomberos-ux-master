@@ -1,50 +1,40 @@
 <form [formGroup]="infoForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="name">Nombre:</label>
+    <label for="name">Nombre completo</label>
     <input
       id="name"
       formControlName="name"
       type="text"
       class="form-control"
+      placeholder="Tu nombre"
       required
     />
-    <div
-      *ngIf="infoForm.get('name')?.invalid && infoForm.get('name')?.touched"
-      class="error"
-    >
-      El nombre es obligatorio.
-    </div>
+    @if(infoForm.get('name')?.invalid && infoForm.get('name')?.touched){
+    <div class="error">El nombre es obligatorio.</div>
+    }
   </div>
 
   <div class="form-group">
-    <label for="email">Correo Electrónico:</label>
+    <label for="email">Correo electrónico</label>
     <input
       id="email"
       formControlName="email"
       type="email"
       class="form-control"
+      placeholder="correo@ejemplo.com"
       required
     />
-    <div
-      *ngIf="infoForm.get('email')?.invalid && infoForm.get('email')?.touched"
-      class="error"
-    >
-      Un correo electrónico válido es obligatorio.
-    </div>
+    @if(infoForm.get('email')?.invalid && infoForm.get('email')?.touched){
+    <div class="error">Ingresa un correo electrónico válido.</div>
+    }
   </div>
 
-  <button type="submit" class="btn btn-primary">Enviar</button>
+  <button type="submit" [disabled]="infoForm.invalid && infoForm.touched">
+    <ui-icon name="send" size="18px"></ui-icon>
+    Enviar solicitud
+  </button>
 </form>
 
-<!-- Mostrar el estado de la sumisión -->
-<div *ngIf="submissionStatus" class="submission-status">
-  {{ submissionStatus }}
-</div>
-
-<!-- Mostrar la respuesta recibida (opcional) -->
-<!--
-<div *ngIf="responseData">
-  <h3>Respuesta del servidor:</h3>
-  <pre>{{ responseData | jso }}</pre>
-</div>
--->
+@if(submissionStatus){
+<div class="submission-status">{{ submissionStatus }}</div>
+}

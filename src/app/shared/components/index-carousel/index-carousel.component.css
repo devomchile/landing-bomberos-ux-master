@@ -1,111 +1,164 @@
-.carousel-container {
+.hero-carousel {
   width: 100%;
   height: 80vh;
-  margin: 0 auto;
-  justify-content: center;
-  overflow: hidden; /* Asegúrate de que el contenido no se desborde */
+  min-height: 350px;
+  overflow: hidden;
 }
 
-.image-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 1rem;
+.hero-carousel .carousel-inner {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-carousel .carousel-item {
+  height: 100%;
+}
+
+.hero-carousel .carousel-item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Caption glass */
+.carousel-caption.glass-caption {
+  left: 1rem;
+  right: auto;
+  bottom: 1rem;
+  padding: 0.5rem 1.25rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2rem;
+  text-align: left;
+}
+
+.carousel-caption.glass-caption span {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Dots / indicators glass */
+.glass-carousel-dots {
+  bottom: 4rem;
   z-index: 10;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2rem;
+  width: fit-content;
+  margin: 0 auto;
 }
 
-@media (max-width: 768px) {
-  .carousel-container {
-    height: 30vh; /* Ajusta la altura para pantallas pequeñas */
-  }
-  .image-description {
-    font-size: 0.8rem;
-    margin-bottom: 3rem;
-  }
-  .carousel-caption{
-    padding: 0;
-  }
-  .carousel-caption h3{
-    font-size: medium;
-    margin: 0;
-    padding: 0;
-  }
-  .carousel-caption p{
-    font-size: small;
-    margin: 0;
-    padding: 0;
-  }
-
-  .igx-carousel {
-    max-width: 100%;
-  }
-  
-  .igx-slide {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .igx-slide img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-.carousel-caption{
-  background-color: rgba(255, 0, 0, 0.375);
-  width: unset;
-  padding: 0;
-  border-radius: 1rem;
+.glass-carousel-dots [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  opacity: 1;
+  transition: all 0.3s ease;
+  margin: 0 3px;
 }
 
-
-.image-container {
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.glass-carousel-dots .active {
+  background: #dc3545;
+  width: 28px;
+  border-radius: 5px;
 }
 
-.igx-carousel {
-  max-width: 100%;
-  width: unset;
-}
-
-.igx-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-  width: unset;
-}
-
-.igx-slide img {
-  background-color: red;
-  object-fit: fill;
-  max-width: 1000px;
-  height: 100%; /* Asumiendo que querías 50px, ya que '50' no es una unidad válida */
-}
-
-::ng-deep igx-carousel .igx-carousel__arrow--prev,
-::ng-deep igx-carousel .igx-carousel__arrow--next {
-  background-color: rgba(255, 255, 255, 0) !important;
+/* Arrows glass */
+.glass-carousel-arrow {
+  width: 48px !important;
+  height: 48px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  opacity: 1 !important;
+  margin: 0 1rem;
 }
 
-::ng-deep igx-carousel .igx-carousel__arrow--prev .igx-nav-arrow,
-::ng-deep igx-carousel .igx-carousel__arrow--next .igx-nav-arrow {
-  color: rgba(255, 0, 0, 0.5) !important;
-  background-color: rgba(117, 117, 117, 0.316);
+.glass-carousel-arrow:hover {
+  background: rgba(220, 53, 69, 0.6) !important;
+  border-color: rgba(220, 53, 69, 0.5) !important;
 }
 
-::ng-deep igx-carousel .igx-carousel__arrow--prev,
-::ng-deep igx-carousel .igx-carousel__arrow--next {
-  width: 30px !important;
-  height: 30px !important;
+.glass-carousel-arrow .carousel-control-prev-icon,
+.glass-carousel-arrow .carousel-control-next-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  filter: invert(1);
 }
-::ng-deep igx-carousel .igx-carousel__arrow--next{
-  margin-right: 2rem;
+
+/* Placeholder */
+.carousel-placeholder {
+  color: white;
+  text-align: center;
+}
+
+.carousel-placeholder h3 {
+  margin: 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.carousel-placeholder p {
+  color: #9aa5b8;
+  margin: 0;
+}
+
+/* Reponsive */
+@media (max-width: 991.98px) {
+  .hero-carousel {
+    height: 55vh;
+    min-height: 280px;
+  }
+
+  .glass-carousel-arrow {
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 0.5rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-carousel {
+    height: 40vh;
+    min-height: 220px;
+  }
+
+  .carousel-caption.glass-caption {
+    left: 0.5rem;
+    bottom: 0.5rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  .carousel-caption.glass-caption span {
+    font-size: 0.75rem;
+  }
+
+  .glass-carousel-dots {
+    bottom: 3rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .glass-carousel-arrow {
+    width: 36px !important;
+    height: 36px !important;
+    margin: 0 0.25rem;
+  }
 }

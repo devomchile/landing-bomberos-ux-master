@@ -1,33 +1,44 @@
 @if(directory){
-<div class="container mt-5" *ngIf="directory">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-8">
-      <h3>{{ directory.title?.rendered }}</h3>
-      @if(featuredMedia){
-      <div class="head">
-        <img
-          [src]="featuredMedia.source_url"
-          alt="Featured Image"
-          class="shadow-sm p-3 mb-5 bg-body rounded"
-        />
-      </div>
-      }
-      <div class="content row col-lg-12 mt-3">
-        @for(card of businessCards; track card.id){
-        <div class="business-card col-lg-6 col-md-6 shadow-lg p-2 mb-5 bg-body">
-          <h5>{{ card.name }}</h5>
-          <p>{{ card.title }}</p>
-          <ul>
-            @for(contact of card.contacts; track contact.id){
-            <li>
-              <i [class]="contact.iconClass"></i>
-              <span>{{ contact.text }}</span>
-            </li>
-            }
-          </ul>
+      <div class="directory-header glass-card">
+        <h3>{{ directory.title?.rendered }}</h3>
+        @if(featuredMedia){
+        <div class="directory-hero">
+          <img [src]="featuredMedia.source_url" alt="Featured Image" />
         </div>
         }
       </div>
+      @if(isLoading){
+      <app-loading></app-loading>
+      } @else {
+      <div class="row g-3 mt-4">
+        @for(card of businessCards; track card.id){
+        <div class="col-md-6">
+          <div class="directory-card glass-card">
+            <div class="directory-card-header">
+              <div class="directory-avatar">
+                <ui-icon name="person" size="1.5rem" color="white"></ui-icon>
+              </div>
+              <div>
+                <h5>{{ card.name }}</h5>
+                <p>{{ card.title }}</p>
+              </div>
+            </div>
+            <ul class="directory-contacts">
+              @for(contact of card.contacts; track contact.id){
+              <li>
+                <ui-icon [name]="getIconName(contact.iconClass)" size="18px" color="#dc3545"></ui-icon>
+                <span>{{ contact.text }}</span>
+              </li>
+              }
+            </ul>
+          </div>
+        </div>
+        }
+      </div>
+      }
     </div>
 
     <div class="col-md-4">

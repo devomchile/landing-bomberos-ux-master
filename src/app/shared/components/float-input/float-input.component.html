@@ -1,22 +1,41 @@
 <div class="form-floating mb-3">
-    <ng-container [ngSwitch]="type">
-        <input *ngSwitchCase="'password'" type="password" class="form-control"  [formControl]="control" placeholder=" ">
-        <input *ngSwitchCase="'email'" type="email" class="form-control"  [formControl]="control" placeholder=" ">
-        <select *ngSwitchCase="'select'" class="form-control"  [formControl]="control">
-        <option *ngFor="let option of options" [value]="option.value">{{option.label}}</option>
-        </select>
-        <div *ngSwitchCase="'radio'" class="form-check">
-        <input *ngFor="let option of options; let i = index" type="radio" class="form-check-input" id="floatingRadio{{i}}" [formControl]="control" [value]="option.value">
-        <label *ngFor="let option of options; let i = index" class="form-check-label" for="floatingRadio{{i}}">{{option.label}}</label>
-        </div>
-        <input *ngSwitchCase="'checkbox'" type="checkbox" class="form-check-input"  [formControl]="control">
-        <textarea *ngSwitchCase="'textarea'" class="form-control"  [formControl]="control" placeholder=" "></textarea>
-        <input *ngSwitchDefault type="text" class="form-control"  [formControl]="control" placeholder=" ">
-    </ng-container>
+    @switch (type) {
+        @case ('password') {
+            <input type="password" class="form-control" [formControl]="control" placeholder=" ">
+        }
+        @case ('email') {
+            <input type="email" class="form-control" [formControl]="control" placeholder=" ">
+        }
+        @case ('select') {
+            <select class="form-control" [formControl]="control">
+                @for (option of options; track option.value) {
+                    <option [value]="option.value">{{option.label}}</option>
+                }
+            </select>
+        }
+        @case ('radio') {
+            <div class="form-check">
+                @for (option of options; track option.value; let i = $index) {
+                    <input type="radio" class="form-check-input" id="floatingRadio{{i}}" [formControl]="control" [value]="option.value">
+                    <label class="form-check-label" for="floatingRadio{{i}}">{{option.label}}</label>
+                }
+            </div>
+        }
+        @case ('checkbox') {
+            <input type="checkbox" class="form-check-input" [formControl]="control">
+        }
+        @case ('textarea') {
+            <textarea class="form-control" [formControl]="control" placeholder=" "></textarea>
+        }
+        @default {
+            <input type="text" class="form-control" [formControl]="control" placeholder=" ">
+        }
+    }
     <label for="floatingInput">{{ title }}</label>
-    <div *ngIf="control.invalid && control.touched" class="text-danger">
-        {{ requiredText }}
-    </div>
+    @if (control.invalid && control.touched) {
+        <div class="text-danger">
+            {{ requiredText }}
+        </div>
+    }
     <small class="form-text text-muted">{{ hint }}</small>
 </div>
-

@@ -1,117 +1,70 @@
 <div class="container mt-2 col-12"><h4>Te puede interesar</h4></div>
+
+@for(carouselId of ['banner1', 'banner2', 'banner3']; track carouselId; let idx
+= $index){ @let images = idx === 0 ? imagesWithLinks1 : idx === 1 ?
+imagesWithLinks2 : imagesWithLinks3;
 <div class="container mt-2">
   <div class="row">
     <div class="col">
       <div class="d-flex justify-content-center align-items-center">
-        @if(imagesWithLinks1){
-        <igx-carousel [loop]="true" [interval]="5000"
-          >@for(item of imagesWithLinks1; track item.id){
-          <igx-slide>
-            <a href="{{ item.link }}" target="_blank">
-              <img [src]="item.src" alt="{{ item.alt }}" /></a
-          ></igx-slide>
-          }
-        </igx-carousel>
+        @if(isLoading){
+        <app-loading></app-loading>
+        } @else { @if(images && images.length > 0){
+        <div
+          [attr.id]="carouselId"
+          class="carousel slide ad-carousel"
+          data-bs-ride="carousel"
+          data-bs-interval="5000"
+        >
+          <div class="carousel-inner">
+            @for(item of images; track item.id; let i = $index){
+            <div class="carousel-item" [class.active]="i === 0">
+              <a [href]="item.link" target="_blank">
+                <img [src]="item.src" [alt]="item.alt" class="ad-img" />
+              </a>
+            </div>
+            }
+          </div>
+          <button
+            class="carousel-control-prev glass-carousel-arrow"
+            type="button"
+            [attr.data-bs-target]="'#' + carouselId"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </button>
+          <button
+            class="carousel-control-next glass-carousel-arrow"
+            type="button"
+            [attr.data-bs-target]="'#' + carouselId"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </button>
+        </div>
         } @else {
-        <h1>Espacio disponible para publicidad</h1>
-        }
+        <div class="ad-placeholder glass-dark">
+          <p>Espacio disponible para publicidad</p>
+        </div>
+        } }
       </div>
     </div>
   </div>
 </div>
-<div class="container mt-2">
-  <div class="row">
-    <div class="col">
-      <div class="d-flex justify-content-center align-items-center">
-        @if(imagesWithLinks2){
-        <igx-carousel [loop]="true" [interval]="5000" direction="prev"
-          >@for(item of imagesWithLinks2; track item.id){
-          <igx-slide>
-            <a href="{{ item.link }}" target="_blank">
-              <img [src]="item.src" alt="{{ item.alt }}" /></a
-          ></igx-slide>
-          }
-        </igx-carousel>
-        } @else {
-        <h1>Espacio disponible para publicidad</h1>
-        }
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container mt-2">
-  <div class="row">
-    <div class="col">
-      <div class="d-flex justify-content-center align-items-center">
-        @if(imagesWithLinks3){
-        <igx-carousel class="custom-carousel" [loop]="true" [interval]="5000"
-          >@for(item of imagesWithLinks3; track item.id){
-          <igx-slide>
-            <a href="{{ item.link }}" target="_blank">
-              <img [src]="item.src" alt="{{ item.alt }}" /></a
-          ></igx-slide>
-          }
-        </igx-carousel>
-        } @else {
-        <h1>Espacio disponible para publicidad</h1>
-        }
-      </div>
-    </div>
-  </div>
-</div>
+}
 <div class="col-md-12 mt-2">
-  <div class="card mb-2 h-50">
-    <a href="http://portalradio.cl/" class="text-decoration-none">
-      <div class="row g-0">
-        <div class="col-md-4 py-1 px-1">
-          <img
-            src="data:image/png;base64,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"
-            alt="Imagen"
-            class="img-fluid h-100"
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title text-danger">Portal Radio</h5>
-          </div>
-        </div>
+  <a href="https://devom.cl/" target="_blank" class="devom-card glass-card">
+    <div class="devom-card-content">
+      <img
+        src="../../../../assets/images/devom-logo.png"
+        alt="Devom.cl"
+        class="devom-logo"
+      />
+      <div class="devom-text">
+        <h5>Devom.cl</h5>
+        <p>Desarrollo web & tecnología</p>
       </div>
-    </a>
-  </div>
-  <div class="card mb-2">
-    <a href="https://www.mods.cl/#inicio" class="text-decoration-none">
-      <div class="row g-0 mt-1">
-        <div class="col-md-4 h-50 py-1 px-1">
-          <img
-            src="https://www.mods.cl/services/app.png"
-            alt="Imagen"
-            class="img-fluid h-75"
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title text-danger">Mods.cl</h5>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
-  <div class="card mb-2">
-    <a href="https://devom.cl/" class="text-decoration-none">
-      <div class="row g-0 mt-1">
-        <div class="col-md-4 h-50 py-1 px-1">
-          <img
-            src="http://portal.cbmalalhue.cl/wp-content/uploads/2024/08/Logo-de-Moda-con-Iniciales-Caligrafico-Elegante-Rosa-y-Negro.png"
-            alt="Imagen"
-            class="img-fluid mt-2 h-75"
-          />
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title text-danger">Devom.cl</h5>
-          </div>
-        </div>
-      </div>
-    </a>
-  </div>
+      <ui-icon name="arrow_forward" size="18px" class="devom-arrow"></ui-icon>
+    </div>
+  </a>
 </div>

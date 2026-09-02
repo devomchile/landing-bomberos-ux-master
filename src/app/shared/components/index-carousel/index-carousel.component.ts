@@ -1,23 +1,21 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, OnInit } from '@angular/core';
-import { IgxCarouselModule, IgxSliderModule } from 'igniteui-angular';
 import {
   ImageDetailsDto,
   PrincipalCarouselService,
 } from '../../../services/principal-carousel';
-import { catchError, firstValueFrom, of, tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
+import { IconComponent } from '../../../ui';
+
 @Component({
-  selector: 'app-index-carousel',
-  standalone: true,
-  imports: [CommonModule, IgxCarouselModule, IgxSliderModule],
-  templateUrl: './index-carousel.component.html',
-  styleUrl: './index-carousel.component.css',
+    selector: 'app-index-carousel',
+    imports: [IconComponent],
+    templateUrl: './index-carousel.component.html',
+    styleUrl: './index-carousel.component.css'
 })
 export class IndexCarouselComponent implements OnInit {
   principalCarousel: any[] = [];
   imagesWithLinks: ImageDetailsDto[] = [];
-
-  currentImageIndex: number = 0;
 
   constructor(
     private readonly getPrincipalCarousel: PrincipalCarouselService

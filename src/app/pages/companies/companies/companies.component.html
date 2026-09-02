@@ -1,83 +1,82 @@
-<div class="position-relative overflow-hidden" style="max-height: 650px">
-  <div
-    class="d-flex align-items-center justify-content-center fullscreen-image"
-    style="max-height: 650px; object-position: center"
-  >
+<section class="companies-hero">
+  <div class="companies-hero-img">
     <img
       src="./assets/images/companias/portadaCompany.jpeg"
-      alt="Imagen a Pantalla Completa"
-      class="parallax-img img-fluid"
-      style="object-position: center"
+      alt="Compañías Bomberos Malalhue"
     />
-  </div>
-</div>
-
-<section class="section-blog">
-  <div class="container py-4">
-    <div class="row">
-      <div class="col-12 text-center mb-4">
-        <h3 class="text-center">Compañias</h3>
-      </div>
+    <div class="companies-hero-overlay"></div>
+    <div class="companies-hero-content">
+      <ui-icon name="groups" size="3rem" color="white"></ui-icon>
+      <h1>Nuestras Compañías</h1>
+      <p>Conoce a los voluntarios que protegen Malalhue</p>
     </div>
   </div>
+</section>
+
+<section class="companies-section">
   <div class="container">
     <div class="row gy-4">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-body bg-danger">
-            <h5 class="card-title text-light text-center">
-              Cuerpo de Bomberos Malalhue
-            </h5>
-            <a
-              [routerLink]="['/companies', 'directorio-general']"
-              class="btn btn-warning regular-button"
-              >Conócenos</a
-            >
+      <div class="col-12">
+        <a [routerLink]="['/companies', 'directorio-general']" class="company-main-card glass-card">
+          <div class="company-main-content">
+            <div class="company-main-icon">
+              <ui-icon name="shield" size="2.5rem" color="white"></ui-icon>
+            </div>
+            <div class="company-main-text">
+              <h3>Cuerpo de Bomberos Malalhue</h3>
+              <p>Directorio General</p>
+            </div>
+            <span class="company-main-arrow">
+              <ui-icon name="arrow_forward" size="20px"></ui-icon>
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <div class="company-card glass-card">
+          <div class="company-card-img">
+            <img src="./assets/images/companias/primera.jpeg" alt="Primera Compañía" />
+          </div>
+          <div class="company-card-body">
+            <h4>Primera Compañía</h4>
+            <p>Bomba Malalhue</p>
+            <a [routerLink]="['/companies', 'primera']" class="company-link">
+              Conoce más
+              <ui-icon name="arrow_forward" size="16px"></ui-icon>
+            </a>
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
-        <div class="card">
-          <img
-            src="./assets/images/companias/primera.jpeg"
-            class="card-img-top"
-            alt="Primera Compañía"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Primera</h5>
-            <a [routerLink]="['/companies', 'primera']" class="btn btn-primary"
-              >Conoce más</a
-            >
+        <div class="company-card glass-card">
+          <div class="company-card-img">
+            <img src="./assets/images/companias/segunda.jpg" alt="Segunda Compañía" />
+          </div>
+          <div class="company-card-body">
+            <h4>Segunda Compañía</h4>
+            <p>Bomba Malalhue</p>
+            <a [routerLink]="['/companies', 'segunda']" class="company-link">
+              Conoce más
+              <ui-icon name="arrow_forward" size="16px"></ui-icon>
+            </a>
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
-        <div class="card">
-          <img
-            src="./assets/images/companias/segunda.jpg"
-            class="card-img-top"
-            alt="Segunda Compañía"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Segunda</h5>
-            <a [routerLink]="['/companies', 'segunda']" class="btn btn-primary"
-              >Conoce más</a
-            >
+        <div class="company-card glass-card">
+          <div class="company-card-img">
+            <img src="./assets/images/companias/tercera.jpg" alt="Tercera Compañía" />
           </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card">
-          <img
-            src="./assets/images/companias/tercera.jpg"
-            class="card-img-top"
-            alt="Tercera Compañía"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Tercera</h5>
-            <a [routerLink]="['/companies', 'tercera']" class="btn btn-primary"
-              >Conoce más</a
-            >
+          <div class="company-card-body">
+            <h4>Tercera Compañía</h4>
+            <p>Bomba Malalhue</p>
+            <a [routerLink]="['/companies', 'tercera']" class="company-link">
+              Conoce más
+              <ui-icon name="arrow_forward" size="16px"></ui-icon>
+            </a>
           </div>
         </div>
       </div>

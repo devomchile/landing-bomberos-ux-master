@@ -6,18 +6,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { FormsService } from '../../../../../services';
-import { CommonModule } from '@angular/common';
+
 import { EMPTY, catchError, map, of, tap } from 'rxjs';
 import { SnackBarService } from '../../../../../services/commons/snack-bar/snack-bar.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SnackBarsColors } from '../../../../../services/commons/snack-bar/enums';
+import { IconComponent } from '../../../../../ui';
 
 @Component({
-  selector: 'app-postulation-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './postulation-form.component.html',
-  styleUrl: './postulation-form.component.css',
+    selector: 'app-postulation-form',
+    imports: [ReactiveFormsModule, IconComponent],
+    templateUrl: './postulation-form.component.html',
+    styleUrl: './postulation-form.component.css'
 })
 export class PostulationFormComponent {
   infoForm: FormGroup;

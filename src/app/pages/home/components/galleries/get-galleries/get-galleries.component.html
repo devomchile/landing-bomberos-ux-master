@@ -1,24 +1,27 @@
 <div class="galleries-container">
   <div class="galleries col-lg-12">
     <h2>Galerías</h2>
-    <p>Compartimos nuestra galería de imagenes</p>
+    <p>Compartimos nuestra galería de imágenes</p>
     @if(isLoading){
     <app-loading></app-loading>
     }@else {
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-3">
       @for (gallery of galleries; track gallery.gid) {
-      <a [routerLink]="['/galerias', gallery.gid]">
-        <div class="gallery-card shadow-lg mb-5 bg-body">
-          <img
-            [src]="gallery.random_image.url"
-            class="card-img-top image-gallery"
-            alt="{{ gallery.random_image.title }}"
-          />
-          <div class="card-body">
-            <h5 class="card-title">
-              <i class="fas fa-image" aria-hidden="true"></i>{{ gallery.title }}
+      <a [routerLink]="['/galerias', gallery.gid]" class="gallery-card-link">
+        <div class="gallery-card glass-card m-2">
+          <div class="gallery-card-img-wrapper">
+            <img
+              [src]="gallery.random_image.url"
+              class="gallery-card-img"
+              alt="{{ gallery.random_image.title }}"
+            />
+            <span class="gallery-card-date">{{ gallery.image_date }}</span>
+          </div>
+          <div class="gallery-card-body">
+            <h5 class="gallery-card-title">
+              <ui-icon name="collections" size="20px" color="#dc3545"></ui-icon>
+              {{ gallery.title }}
             </h5>
-            <span class="span-date">{{ gallery.image_date }}</span>
           </div>
         </div>
       </a>
@@ -26,11 +29,10 @@
     </div>
     }
   </div>
-  <button
-    type="button"
-    class="btn btn-outline-danger"
-    [routerLink]="['/galerias']"
-  >
-    Ver más galerías
-  </button>
+  <div class="gallery-cta">
+    <button type="button" class="gallery-btn" [routerLink]="['/galerias']">
+      Ver más galerías
+      <ui-icon name="arrow_forward" size="18px"></ui-icon>
+    </button>
+  </div>
 </div>

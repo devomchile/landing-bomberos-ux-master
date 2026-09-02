@@ -1,51 +1,99 @@
-.wp-block-image img {
-  width: 100% !important;
-  height: auto;
-}
-.head{
-  width: 100%;
-}
-.head img{
-  width: 100%;
+.directory-header {
+  padding: 1.75rem;
+  overflow: hidden;
 }
 
-h2{
-  text-align: center;
-}
-
-.content{
-  display: flex;
-  max-width: 100%!important;
-  margin: 0px;
-  justify-content: space-evenly;
-}
-
-.business-card{
-  width: 100%;
-  max-width: 300px;
-  margin: 0px 5px;
-  border-radius: 1rem;
-  background-color: #fff;
-}
-
-.business-card h5{
-  font-size: 26px;
-  margin: 0px;
-  padding: 0px;
-  color: #022859
-}
-
-.business-card p{
-  margin: 0px;
-  padding: 0px;
-  font-size: 16px;
+.directory-header h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
   color: #022859;
-}
-ul span{
-  color: #223240;
-  margin-left: 8px;
+  margin: 0 0 1rem 0;
 }
 
-ul i{
-  color: brown;
+.directory-hero {
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.directory-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.directory-card {
+  padding: 1.25rem;
+  height: 100%;
+}
+
+.directory-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.directory-avatar {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dc3545, #A60A27);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.directory-card-header h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #022859;
+  margin: 0 0 0.15rem 0;
+}
+
+.directory-card-header p {
+  font-size: 0.82rem;
+  color: #868e96;
+  margin: 0;
+}
+
+.directory-contacts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.directory-contacts li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #495057;
+  padding: 0.35rem 0;
+}
+
+.directory-contacts span {
+  color: #495057;
+}
+
+[data-theme="dark"] .directory-header h3 {
+  color: #eaeaea !important;
+}
+
+[data-theme="dark"] .directory-card-header h5 {
+  color: #eaeaea;
+}
+
+[data-theme="dark"] .directory-card-header p {
+  color: #7b89a1;
+}
+
+[data-theme="dark"] .directory-contacts li,
+[data-theme="dark"] .directory-contacts span {
+  color: #bcc4d0;
 }
